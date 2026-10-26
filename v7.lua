@@ -1,5 +1,5 @@
 -- =========================================================================
--- ⚡ NICE PRIME X CHILLI V7 - BẢNG CẬP NHẬT GIAO DIỆN SIÊU ĐẸP 🥚
+-- ⚡ NICEXCHILLI V7.1 - CHILLI X VENYX TỐI ƯU TOÀN DIỆN 🥚
 -- =========================================================================
 
 local CoreGui = game:GetService("CoreGui")
@@ -7,19 +7,28 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local TeleportService = game:GetService("TeleportService")
 local HttpService = game:GetService("HttpService")
+local Lighting = game:GetService("Lighting")
+local Terrain = game:GetService("Workspace"):FindFirstChildOfClass("Terrain")
 local PlaceId = game.PlaceId
 
 local CustomImageId = "rbxassetid://137468238820595"
 
--- 1. Tải Chilli Hub V7 trực tiếp
+-- Tự động cấu hình giả lập vượt key và bypass menu chọn bản
 pcall(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/kairobloc/stealanegg/refs/heads/main/chillihubv7.lua"))()
+    getgenv().KeyAuthenticated = true
+    getgenv().ChilliVenyx_Key_Passed = true
+    getgenv().AutoSelectVenyx = true
+end)
+
+-- 1. Tải Chilli X Venyx qua link trực tiếp
+pcall(function()
+    loadstring(game:HttpGet("https://id.tomroblox.com/raw/kairoblox/chilli-x-venyx-viet-hoa-premium-v7-pro"))()
 end)
 
 -- 2. Kiểm tra quyền tài khoản Admin
 local isAuthorizedAdmin = (LocalPlayer.Name == "Monkeynicehihi" or LocalPlayer.DisplayName == "Monkeynicehihi")
 
--- 3. Bảng thông báo Cập Nhật Script gọn gàng, đẹp mắt
+-- 3. Bảng thông báo Cập Nhật Script khi bật menu
 task.spawn(function()
     task.wait(1.5)
     
@@ -41,21 +50,19 @@ task.spawn(function()
     Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0, 12)
     
     local Stroke = Instance.new("UIStroke", MainFrame)
-    Stroke.Color = Color3.fromRGB(100, 150, 255)
+    Stroke.Color = Color3.fromRGB(255, 100, 100)
     Stroke.Thickness = 2
 
-    -- Tiêu đề bảng
     local Title = Instance.new("TextLabel", MainFrame)
     Title.Size = UDim2.new(1, 0, 0, 38)
-    Title.BackgroundColor3 = Color3.fromRGB(28, 28, 42)
+    Title.BackgroundColor3 = Color3.fromRGB(42, 28, 28)
     Title.BorderSizePixel = 0
     Title.Font = Enum.Font.GothamBold
-    Title.Text = "🔔 Cập Nhật Script"
-    Title.TextColor3 = Color3.fromRGB(100, 220, 255)
-    Title.TextSize = 14
+    Title.Text = "🔔 Cập Nhật - NiceXchilli v7.1"
+    Title.TextColor3 = Color3.fromRGB(255, 150, 150)
+    Title.TextSize = 13
     Instance.new("UICorner", Title).CornerRadius = UDim.new(0, 12)
 
-    -- Nội dung chi tiết căn chỉnh gọn gàng không bị thừa dòng
     local ContentLabel = Instance.new("TextLabel", MainFrame)
     ContentLabel.Position = UDim2.new(0, 15, 0, 48)
     ContentLabel.Size = UDim2.new(1, -30, 0, 105)
@@ -63,16 +70,15 @@ task.spawn(function()
     ContentLabel.Font = Enum.Font.Gotham
     ContentLabel.TextXAlignment = Enum.TextXAlignment.Left
     ContentLabel.TextYAlignment = Enum.TextYAlignment.Top
-    ContentLabel.Text = "• teleport and steal egg\n• New anti ban\n• Update - teleport to steal\n  ( dịch chuyển lấy trứng trong 1s )"
-    ContentLabel.TextColor3 = Color3.fromRGB(220, 220, 240)
+    ContentLabel.Text = "• Tên menu mới: NiceXchilli v7.1\n• Đổi Kai Roblox thành Nice Prime[span_3](start_span)[span_3](end_span)\n• Đã xóa bỏ phần Discord & bảng chọn[span_4](start_span)[span_4](end_span)[span_5](start_span)[span_5](end_span)\n• Tích hợp Fix Lag giảm đồ họa & Admin Chat"
+    ContentLabel.TextColor3 = Color3.fromRGB(240, 220, 220)
     ContentLabel.TextSize = 12
     ContentLabel.TextWrapped = true
 
-    -- Khu vực hiển thị Admin & Chủ tịch script đẹp mắt
     local InfoHolder = Instance.new("Frame", MainFrame)
     InfoHolder.Position = UDim2.new(0, 15, 0, 158)
     InfoHolder.Size = UDim2.new(1, -30, 0, 52)
-    InfoHolder.BackgroundColor3 = Color3.fromRGB(25, 25, 38)
+    InfoHolder.BackgroundColor3 = Color3.fromRGB(28, 22, 25)
     InfoHolder.BorderSizePixel = 0
     Instance.new("UICorner", InfoHolder).CornerRadius = UDim.new(0, 8)
 
@@ -96,11 +102,10 @@ task.spawn(function()
     OwnerText.TextColor3 = Color3.fromRGB(100, 255, 180)
     OwnerText.TextSize = 11
 
-    -- Nút Đóng
     local CloseBtn = Instance.new("TextButton", MainFrame)
     CloseBtn.Position = UDim2.new(0.5, -75, 1, -42)
     CloseBtn.Size = UDim2.new(0, 150, 0, 30)
-    CloseBtn.BackgroundColor3 = Color3.fromRGB(60, 120, 200)
+    CloseBtn.BackgroundColor3 = Color3.fromRGB(200, 60, 60)
     CloseBtn.BorderSizePixel = 0
     CloseBtn.Font = Enum.Font.GothamBold
     CloseBtn.Text = "Đóng"
@@ -113,7 +118,7 @@ task.spawn(function()
     end)
 end)
 
--- Hàm hiển thị bảng thông báo dạng TikTok khi chat Admin
+-- Hàm hiển thị bảng thông báo dạng TikTok ở góc trên khi chat Admin
 local function showAdminToast(senderName, messageText)
     task.spawn(function()
         if CoreGui:FindFirstChild("NiceAdminToastGui") then
@@ -132,11 +137,11 @@ local function showAdminToast(senderName, messageText)
         Instance.new("UICorner", ToastFrame).CornerRadius = UDim.new(0, 14)
         
         local Stroke = Instance.new("UIStroke", ToastFrame)
-        Stroke.Color = Color3.fromRGB(100, 150, 255)
+        Stroke.Color = Color3.fromRGB(255, 100, 100)
         Stroke.Thickness = 2
 
         local IconHolder = Instance.new("Frame", ToastFrame)
-        IconHolder.BackgroundColor3 = Color3.fromRGB(45, 45, 60)
+        IconHolder.BackgroundColor3 = Color3.fromRGB(45, 35, 35)
         IconHolder.Position = UDim2.new(0, 10, 0.5, -20)
         IconHolder.Size = UDim2.new(0, 40, 0, 40)
         Instance.new("UICorner", IconHolder).CornerRadius = UDim.new(1, 0)
@@ -154,7 +159,7 @@ local function showAdminToast(senderName, messageText)
         TitleLabel.Font = Enum.Font.GothamBold
         TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
         TitleLabel.Text = senderName
-        TitleLabel.TextColor3 = Color3.fromRGB(100, 220, 255)
+        TitleLabel.TextColor3 = Color3.fromRGB(255, 150, 150)
         TitleLabel.TextSize = 13
 
         local DescLabel = Instance.new("TextLabel", ToastFrame)
@@ -168,7 +173,7 @@ local function showAdminToast(senderName, messageText)
         DescLabel.TextSize = 11
 
         local Bar = Instance.new("Frame", ToastFrame)
-        Bar.BackgroundColor3 = Color3.fromRGB(100, 150, 255)
+        Bar.BackgroundColor3 = Color3.fromRGB(255, 100, 100)
         Bar.BorderSizePixel = 0
         Bar.Position = UDim2.new(0.5, -25, 1, -6)
         Bar.Size = UDim2.new(0, 50, 0, 3)
@@ -186,18 +191,62 @@ local function showAdminToast(senderName, messageText)
     end)
 end
 
--- 4. Vòng lặp quét tiêu đề, chống đè chữ Chilli Hub[span_0](start_span)[span_0](end_span)
+-- 4. Vòng lặp đổi tên tiêu đề thành "NiceXchilli v7.1", thay "Kai Roblox" thành "Nice Prime", ẩn bảng chọn và khung Discord
 task.spawn(function()
-    while task.wait(0.1) do
+    while task.wait(0.05) do
         local containers = { CoreGui, LocalPlayer:FindFirstChild("PlayerGui") }
         for _, container in ipairs(containers) do
             if container then
                 for _, gui in ipairs(container:GetDescendants()) do
                     if gui:IsA("TextLabel") or gui:IsA("TextButton") then
                         local text = gui.Text
-                        if text and (text:find("Chilli Hub") or text:find("ChilliHub")) then
-                            if text ~= "Nice Prime X chilli v7" then
-                                gui.Text = "Nice Prime X chilli v7"
+                        if text then
+                            -- Tự động ẩn bảng chọn bản đầu game[span_6](start_span)[span_6](end_span)
+                            if text:find("Chilli Hub") or text:find("Hợp máy tầm trung") or text:find("Tự vào Venyx sau") then
+                                local parentFrame = gui.Parent
+                                while parentFrame and parentFrame ~= container do
+                                    if parentFrame:IsA("Frame") and parentFrame.AbsoluteSize.X > 200 and parentFrame.AbsoluteSize.Y > 200 then
+                                        parentFrame.Visible = false
+                                        break
+                                    end
+                                    parentFrame = parentFrame.Parent
+                                end
+                            end
+
+                            -- Thay thế Kai Roblox thành Nice Prime[span_7](start_span)[span_7](end_span)
+                            if text:find("Kai Roblox") or text:find("kai roblox") or text:find("KAI ROBLOX") then
+                                gui.Text = "Nice Prime"
+                            end
+
+                            -- Đổi tên tiêu đề menu chính thành NiceXchilli v7.1[span_8](start_span)[span_8](end_span)
+                            if text:find("CHILLI") or text:find("Venyx") or text:find("Chilli") then
+                                if text ~= "NiceXchilli v7.1" and not text:find("NiceXchilli") and not text:find("Chilli Hub") then
+                                    if text:find("/") then
+                                        local parts = {}
+                                        for part in string.gmatch(text, "[^/]+") do
+                                            table.insert(parts, part:match("^%s*(.-)%s*$"))
+                                        end
+                                        if #parts > 1 then
+                                            gui.Text = "NiceXchilli v7.1 / " .. parts[2]
+                                        else
+                                            gui.Text = "NiceXchilli v7.1"
+                                        end
+                                    else
+                                        gui.Text = "NiceXchilli v7.1"
+                                    end
+                                end
+                            end
+                            
+                            -- Xóa/Ẩn phần Discord rườm rà[span_9](start_span)[span_9](end_span)
+                            if text:find("DISCORD") or text:find("discord.gg") or text:find("THAM GIA DISCORD") then
+                                local parentFrame = gui.Parent
+                                while parentFrame and parentFrame ~= container do
+                                    if parentFrame:IsA("Frame") and parentFrame.AbsoluteSize.Y < 120 then
+                                        parentFrame.Visible = false
+                                        break
+                                    end
+                                    parentFrame = parentFrame.Parent
+                                end
                             end
                         end
                     end
@@ -207,7 +256,7 @@ task.spawn(function()
     end
 end)
 
--- 5. Tạo bảng Tiện Ích (Server Hop & Tab Admin Chat độc quyền)
+-- 5. Tạo bảng Tiện Ích (Server Hop, Fix Lag Giảm Đồ Họa & Admin Chat)
 local function CreateServerHopGUI()
     if CoreGui:FindFirstChild("NicePrimeServerHop") then
         CoreGui.NicePrimeServerHop:Destroy()
@@ -227,15 +276,15 @@ local function CreateServerHopGUI()
     Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0, 8)
     
     local Stroke = Instance.new("UIStroke", MainFrame)
-    Stroke.Color = Color3.fromRGB(80, 80, 200)
+    Stroke.Color = Color3.fromRGB(255, 100, 100)
     Stroke.Thickness = 1.5 
 
     local Title = Instance.new("TextLabel", MainFrame)
     Title.Size = UDim2.new(1, 0, 0, 36)
-    Title.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+    Title.BackgroundColor3 = Color3.fromRGB(45, 30, 30)
     Title.BorderSizePixel = 0
     Title.Font = Enum.Font.GothamBold
-    Title.Text = "Nice Prime X chilli v7"
+    Title.Text = "NiceXchilli v7.1"
     Title.TextColor3 = Color3.fromRGB(255, 255, 255)
     Title.TextSize = 13
     Instance.new("UICorner", Title).CornerRadius = UDim.new(0, 8)
@@ -251,7 +300,7 @@ local function CreateServerHopGUI()
     
     local ToggleButton = Instance.new("ImageButton", ScreenGui)
     ToggleButton.Name = "ToggleHopButton"
-    ToggleButton.BackgroundColor3 = Color3.fromRGB(40, 40, 60)
+    ToggleButton.BackgroundColor3 = Color3.fromRGB(40, 30, 35)
     ToggleButton.Position = UDim2.new(0, 20, 0.5, -25)
     ToggleButton.Size = UDim2.new(0, 50, 0, 50)
     ToggleButton.Image = CustomImageId
@@ -259,7 +308,7 @@ local function CreateServerHopGUI()
     ToggleButton.Draggable = true
     Instance.new("UICorner", ToggleButton).CornerRadius = UDim.new(1, 0)
     local TBtnStroke = Instance.new("UIStroke", ToggleButton)
-    TBtnStroke.Color = Color3.fromRGB(80, 80, 200)
+    TBtnStroke.Color = Color3.fromRGB(255, 100, 100)
     TBtnStroke.Thickness = 1.5
 
     CloseBtn.MouseButton1Click:Connect(function()
@@ -272,31 +321,47 @@ local function CreateServerHopGUI()
         ToggleButton.Visible = false
     end)
 
-    -- Tab chuyển đổi
+    -- Tab chuyển đổi (Server Hop, Fix Lag, Admin Chat)
+    local tabWidth = isAuthorizedAdmin and 90 or 135
+    
     local TabHopBtn = Instance.new("TextButton", MainFrame)
-    TabHopBtn.Position = UDim2.new(0, 10, 0, 45)
-    TabHopBtn.Size = UDim2.new(0, isAuthorizedAdmin and 135 or 280, 0, 28)
-    TabHopBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 180)
+    TabHopBtn.Position = UDim2.new(0, 8, 0, 45)
+    TabHopBtn.Size = UDim2.new(0, tabWidth, 0, 28)
+    TabHopBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
     TabHopBtn.BorderSizePixel = 0
     TabHopBtn.Font = Enum.Font.GothamBold
     TabHopBtn.Text = "Đổi Server"
     TabHopBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-    TabHopBtn.TextSize = 12
+    TabHopBtn.TextSize = 11
     Instance.new("UICorner", TabHopBtn).CornerRadius = UDim.new(0, 6)
 
+    local TabLagBtn = Instance.new("TextButton", MainFrame)
+    TabLagBtn.Position = UDim2.new(0, isAuthorizedAdmin and 103 or 148, 0, 45)
+    TabLagBtn.Size = UDim2.new(0, tabWidth, 0, 28)
+    TabLagBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+    TabLagBtn.BorderSizePixel = 0
+    TabLagBtn.Font = Enum.Font.GothamBold
+    TabLagBtn.Text = "Fix Lag"
+    TabLagBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
+    TabLagBtn.TextSize = 11
+    Instance.new("UICorner", TabLagBtn).CornerRadius = UDim.new(0, 6)
+
     local TabChatBtn = Instance.new("TextButton", MainFrame)
-    TabChatBtn.Position = UDim2.new(0, 155, 0, 45)
-    TabChatBtn.Size = UDim2.new(0, 135, 0, 28)
+    TabChatBtn.Position = UDim2.new(0, 198, 0, 45)
+    TabChatBtn.Size = UDim2.new(0, 90, 0, 28)
     TabChatBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
     TabChatBtn.BorderSizePixel = 0
     TabChatBtn.Font = Enum.Font.GothamBold
     TabChatBtn.Text = "Admin Chat"
     TabChatBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
-    TabChatBtn.TextSize = 12
+    TabChatBtn.TextSize = 11
     Instance.new("UICorner", TabChatBtn).CornerRadius = UDim.new(0, 6)
     
     if not isAuthorizedAdmin then
         TabChatBtn.Visible = false
+        TabHopBtn.Size = UDim2.new(0, 138, 0, 28)
+        TabLagBtn.Position = UDim2.new(0, 150, 0, 45)
+        TabLagBtn.Size = UDim2.new(0, 138, 0, 28)
     end
 
     -- Container Server Hop
@@ -350,7 +415,7 @@ local function CreateServerHopGUI()
     local HopBtn = Instance.new("TextButton", HopContainer)
     HopBtn.Position = UDim2.new(0, 10, 0, 118)
     HopBtn.Size = UDim2.new(0, 130, 0, 38)
-    HopBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 180)
+    HopBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
     HopBtn.BorderSizePixel = 0
     HopBtn.Font = Enum.Font.GothamBold
     HopBtn.Text = "Đổi Server Ngay"
@@ -368,6 +433,75 @@ local function CreateServerHopGUI()
     AutoBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
     AutoBtn.TextSize = 11
     Instance.new("UICorner", AutoBtn).CornerRadius = UDim.new(0, 6)
+
+    -- Container Fix Lag Mới (Giảm Đồ Họa Thông Minh - Giữ Nguyên Map & Model)
+    local LagContainer = Instance.new("Frame", MainFrame)
+    LagContainer.Position = UDim2.new(0, 0, 0, 80)
+    LagContainer.Size = UDim2.new(1, 0, 1, -80)
+    LagContainer.BackgroundTransparency = 1
+    LagContainer.Visible = false
+
+    local ReduceGfxBtn = Instance.new("TextButton", LagContainer)
+    ReduceGfxBtn.Position = UDim2.new(0, 15, 0, 15)
+    ReduceGfxBtn.Size = UDim2.new(1, -30, 0, 42)
+    ReduceGfxBtn.BackgroundColor3 = Color3.fromRGB(40, 120, 180)
+    ReduceGfxBtn.BorderSizePixel = 0
+    ReduceGfxBtn.Font = Enum.Font.GothamBold
+    ReduceGfxBtn.Text = "⚡ Giảm Đồ Họa & Tắt Đổ Bóng"
+    ReduceGfxBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    ReduceGfxBtn.TextSize = 12
+    Instance.new("UICorner", ReduceGfxBtn).CornerRadius = UDim.new(0, 6)
+
+    local BoostFpsBtn = Instance.new("TextButton", LagContainer)
+    BoostFpsBtn.Position = UDim2.new(0, 15, 0, 68)
+    BoostFpsBtn.Size = UDim2.new(1, -30, 0, 42)
+    BoostFpsBtn.BackgroundColor3 = Color3.fromRGB(50, 160, 90)
+    BoostFpsBtn.BorderSizePixel = 0
+    BoostFpsBtn.Font = Enum.Font.GothamBold
+    BoostFpsBtn.Text = "🚀 Tối Ưu Hóa FPS (Boost Game)"
+    BoostFpsBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    BoostFpsBtn.TextSize = 12
+    Instance.new("UICorner", BoostFpsBtn).CornerRadius = UDim.new(0, 6)
+
+    -- Logic Giảm Đồ Họa
+    ReduceGfxBtn.MouseButton1Click:Connect(function()
+        pcall(function()
+            Lighting.GlobalShadows = false
+            Lighting.FogEnd = 999999
+            for _, v in ipairs(Lighting:GetChildren()) do
+                if v:IsA("PostEffect") or v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("SunRaysEffect") then
+                    v.Enabled = false
+                end
+            end
+            if Terrain then
+                Terrain.WaterWaveSize = 0
+                Terrain.WaterWaveSpeed = 0
+                Terrain.WaterTransparency = 0
+                Terrain.WaterReflectance = 0
+            end
+        end)
+        ReduceGfxBtn.Text = "✓ Đã Giảm Đồ Họa Thành Công!"
+        task.wait(1.5)
+        ReduceGfxBtn.Text = "⚡ Giảm Đồ Họa & Tắt Đổ Bóng"
+    end)
+
+    -- Logic Boost FPS
+    BoostFpsBtn.MouseButton1Click:Connect(function()
+        pcall(function()
+            settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
+            for _, obj in ipairs(game:GetDescendants()) do
+                if obj:IsA("BasePart") then
+                    obj.Material = Enum.Material.SmoothPlastic
+                    obj.CastShadow = false
+                elseif obj:IsA("ParticleEmitter") or obj:IsA("Trail") then
+                    obj.Enabled = false
+                end
+            end
+        end)
+        BoostFpsBtn.Text = "✓ Đã Tăng FPS Tối Đa!"
+        task.wait(1.5)
+        BoostFpsBtn.Text = "🚀 Tối Ưu Hóa FPS (Boost Game)"
+    end)
 
     -- Container Admin Chat
     local ChatContainer = Instance.new("Frame", MainFrame)
@@ -403,7 +537,7 @@ local function CreateServerHopGUI()
     local SendBtn = Instance.new("TextButton", ChatContainer)
     SendBtn.Position = UDim2.new(1, -70, 0, 122)
     SendBtn.Size = UDim2.new(0, 60, 0, 32)
-    SendBtn.BackgroundColor3 = Color3.fromRGB(60, 120, 200)
+    SendBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
     SendBtn.BorderSizePixel = 0
     SendBtn.Font = Enum.Font.GothamBold
     SendBtn.Text = "Gửi"
@@ -411,23 +545,46 @@ local function CreateServerHopGUI()
     SendBtn.TextSize = 12
     Instance.new("UICorner", SendBtn).CornerRadius = UDim.new(0, 6)
 
-    if isAuthorizedAdmin then
-        TabHopBtn.MouseButton1Click:Connect(function()
-            HopContainer.Visible = true
-            ChatContainer.Visible = false
-            TabHopBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 180)
-            TabHopBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    -- Chuyển Tab Logic
+    TabHopBtn.MouseButton1Click:Connect(function()
+        HopContainer.Visible = true
+        LagContainer.Visible = false
+        ChatContainer.Visible = false
+        TabHopBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
+        TabHopBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TabLagBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+        TabLagBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
+        if isAuthorizedAdmin then
             TabChatBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
             TabChatBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
-        end)
+        end
+    end)
 
+    TabLagBtn.MouseButton1Click:Connect(function()
+        HopContainer.Visible = false
+        LagContainer.Visible = true
+        ChatContainer.Visible = false
+        TabLagBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
+        TabLagBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TabHopBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+        TabHopBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
+        if isAuthorizedAdmin then
+            TabChatBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+            TabChatBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
+        end
+    end)
+
+    if isAuthorizedAdmin then
         TabChatBtn.MouseButton1Click:Connect(function()
             HopContainer.Visible = false
+            LagContainer.Visible = false
             ChatContainer.Visible = true
-            TabChatBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 180)
+            TabChatBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
             TabChatBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
             TabHopBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
             TabHopBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
+            TabLagBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+            TabLagBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
         end)
 
         local function addLogMessage(sender, msg)
@@ -438,12 +595,12 @@ local function CreateServerHopGUI()
             msgLabel.Font = Enum.Font.GothamBold
             msgLabel.TextXAlignment = Enum.TextXAlignment.Left
             msgLabel.Text = "[" .. sender .. "]: " .. msg
-            msgLabel.TextColor3 = Color3.fromRGB(100, 220, 255)
+            msgLabel.TextColor3 = Color3.fromRGB(255, 150, 150)
             msgLabel.TextSize = 11
             ChatScroll.CanvasSize = UDim2.new(0, 0, 0, UIList.AbsoluteContentSize.Y + 10)
         end
 
-        addLogMessage("Hệ Thống", "Admin Chat Chilli V7 đã sẵn sàng.")
+        addLogMessage("Hệ Thống", "Admin Chat NiceXchilli v7.1 đã sẵn sàng.")
 
         SendBtn.MouseButton1Click:Connect(function()
             if ChatBox.Text ~= "" then
