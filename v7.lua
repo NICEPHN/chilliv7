@@ -58,13 +58,13 @@ titleLabel.TextSize = 19
 titleLabel.TextTransparency = 1
 titleLabel.Parent = mainFrame
 
---// Nội dung thông báo đã bỏ chữ "từ"
+--// Nội dung thông báo (Đã đổi thành 20:00)
 local descLabel = Instance.new("TextLabel")
 descLabel.Size = UDim2.new(1, -40, 0, 100)
 descLabel.Position = UDim2.new(0, 20, 0, 70)
 descLabel.BackgroundTransparency = 1
 descLabel.Font = Enum.Font.GothamMedium
-descLabel.Text = "Xin lỗi tất cả anh em hôm nay admin chilliv7 sẽ được bảo trì đến 19:00 để fix ban nha anh em\n\nKey bồi thường:\nAdmin_key_1111"
+descLabel.Text = "Xin lỗi tất cả anh em hôm nay admin chilliv7 sẽ được bảo trì đến 20:00 để fix ban nha anh em\n\nKey bồi thường:\nAdmin_key_1111"
 descLabel.TextColor3 = Color3.fromRGB(220, 220, 230)
 descLabel.TextSize = 13.5
 descLabel.TextWrapped = true
@@ -124,5 +124,6 @@ okButton.MouseButton1Click:Connect(function()
 	task.wait(0.35)
 	screenGui:Destroy()
 end)
+
 
 
