@@ -1,21 +1,28 @@
 -- =========================================================================
--- ⚡ NICEXCHILLI V7.2 - KEY SYSTEM ĐÃ XÓA DÒNG GỢI Ý 🥚
+-- ⚡ nicexchilli v7.2 - code to free key (thêm content-creatos) 🥚
 -- =========================================================================
 
-local CoreGui = game:GetService("CoreGui")
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local TeleportService = game:GetService("TeleportService")
-local HttpService = game:GetService("HttpService")
-local Lighting = game:GetService("Lighting")
-local Terrain = game:GetService("Workspace"):FindFirstChildOfClass("Terrain")
-local PlaceId = game.PlaceId
+local coreGui = game:GetService("CoreGui")
+local players = game:GetService("Players")
+local localPlayer = players.LocalPlayer
+local teleportService = game:GetService("TeleportService")
+local httpService = game:GetService("HttpService")
+local lighting = game:GetService("Lighting")
+local terrain = game:GetService("Workspace"):FindFirstChildOfClass("Terrain")
+local placeId = game.PlaceId
 
-local CustomImageId = "rbxassetid://137468238820595"
-local KeyLink = "https://nicephn.github.io/Keyv7chill/"
+local customImageId = "rbxassetid://137468238820595"
+local keyLink = "https://nicephn.github.io/Keyv7chill/"
 
--- Hàm khởi chạy Menu chính sau khi vượt key thành công
-local function LaunchMainScript()
+-- danh sách code hợp lệ bao gồm cả code độc quyền cho creator
+local validCodes = {
+    ["Nice_code"] = "Chiliiv7_",
+    ["chilliv7promax"] = "Chiliiv7_",
+    ["Content-creatos"] = "CreatorV7_VIP_"
+}
+
+-- hàm khởi chạy menu chính sau khi vượt key thành công
+local function launchMainScript()
     pcall(function()
         getgenv().KeyAuthenticated = true
         getgenv().ChilliVenyx_Key_Passed = true
@@ -27,90 +34,90 @@ local function LaunchMainScript()
         loadstring(game:HttpGet("https://id.tomroblox.com/raw/kairoblox/chilli-x-venyx-viet-hoa-premium-v7-pro"))()
     end)
 
-    local isAuthorizedAdmin = (LocalPlayer.Name == "Monkeynicehihi" or LocalPlayer.DisplayName == "Monkeynicehihi")
+    local isAuthorizedAdmin = (localPlayer.Name == "Monkeynicehihi" or localPlayer.DisplayName == "Monkeynicehihi")
 
     task.spawn(function()
         task.wait(1.5)
         
-        if CoreGui:FindFirstChild("NiceUpdateLogGui") then
-            CoreGui.NiceUpdateLogGui:Destroy()
+        if coreGui:FindFirstChild("NiceUpdateLogGui") then
+            coreGui.NiceUpdateLogGui:Destroy()
         end
 
-        local ScreenGui = Instance.new("ScreenGui", CoreGui)
-        ScreenGui.Name = "NiceUpdateLogGui"
-        ScreenGui.ResetOnSpawn = false
+        local screenGui = Instance.new("ScreenGui", coreGui)
+        screenGui.Name = "NiceUpdateLogGui"
+        screenGui.ResetOnSpawn = false
 
-        local MainFrame = Instance.new("Frame", ScreenGui)
-        MainFrame.BackgroundColor3 = Color3.fromRGB(12, 12, 18)
-        MainFrame.BorderSizePixel = 0
-        MainFrame.Position = UDim2.new(0.5, -185, 0.5, -150)
-        MainFrame.Size = UDim2.new(0, 370, 0, 280)
-        MainFrame.Active = true
-        MainFrame.Draggable = true
-        Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0, 16)
+        local mainFrame = Instance.new("Frame", screenGui)
+        mainFrame.BackgroundColor3 = Color3.fromRGB(12, 12, 18)
+        mainFrame.BorderSizePixel = 0
+        mainFrame.Position = UDim2.new(0.5, -185, 0.5, -150)
+        mainFrame.Size = UDim2.new(0, 370, 0, 280)
+        mainFrame.Active = true
+        mainFrame.Draggable = true
+        Instance.new("UICorner", mainFrame).CornerRadius = UDim.new(0, 16)
         
-        local Stroke = Instance.new("UIStroke", MainFrame)
-        Stroke.Color = Color3.fromRGB(255, 80, 120)
-        Stroke.Thickness = 2.5
+        local stroke = Instance.new("UIStroke", mainFrame)
+        stroke.Color = Color3.fromRGB(255, 80, 120)
+        stroke.Thickness = 2.5
 
-        local Title = Instance.new("TextLabel", MainFrame)
-        Title.Size = UDim2.new(1, 0, 0, 42)
-        Title.BackgroundColor3 = Color3.fromRGB(35, 20, 30)
-        Title.BorderSizePixel = 0
-        Title.Font = Enum.Font.GothamBold
-        Title.Text = "💎 UPDATE 4K 4D - NICEXCHILLI V7.2"
-        Title.TextColor3 = Color3.fromRGB(255, 140, 160)
-        Title.TextSize = 13
-        Instance.new("UICorner", Title).CornerRadius = UDim.new(0, 16)
+        local title = Instance.new("TextLabel", mainFrame)
+        title.Size = UDim2.new(1, 0, 0, 42)
+        title.BackgroundColor3 = Color3.fromRGB(35, 20, 30)
+        title.BorderSizePixel = 0
+        title.Font = Enum.Font.GothamBold
+        title.Text = "cập nhật 4k 4d - nicexchilli v7.2"
+        title.TextColor3 = Color3.fromRGB(255, 140, 160)
+        title.TextSize = 13
+        Instance.new("UICorner", title).CornerRadius = UDim.new(0, 16)
 
-        local ContentLabel = Instance.new("TextLabel", MainFrame)
-        ContentLabel.Position = UDim2.new(0, 15, 0, 52)
-        ContentLabel.Size = UDim2.new(1, -30, 0, 115)
-        ContentLabel.BackgroundTransparency = 1
-        ContentLabel.Font = Enum.Font.Gotham
-        ContentLabel.TextXAlignment = Enum.TextXAlignment.Left
-        ContentLabel.TextYAlignment = Enum.TextYAlignment.Top
-        ContentLabel.Text = "• Update!\n• New finder\n  ( tele vào server có trứng khi spam có giá tiền nhiều hơn)\n• Tự động chọn Venyx & xóa bảng Discord"
-        ContentLabel.TextColor3 = Color3.fromRGB(235, 235, 245)
-        ContentLabel.TextSize = 12
-        ContentLabel.TextWrapped = true
+        local contentLabel = Instance.new("TextLabel", mainFrame)
+        contentLabel.Position = UDim2.new(0, 15, 0, 52)
+        contentLabel.Size = UDim2.new(1, -30, 0, 115)
+        contentLabel.BackgroundTransparency = 1
+        contentLabel.Font = Enum.Font.Gotham
+        contentLabel.TextXAlignment = Enum.TextXAlignment.Left
+        contentLabel.TextYAlignment = Enum.TextYAlignment.Top
+        contentLabel.Text = "• đã cập nhật!\n• tính năng tìm trứng mới\n  ( tele vào server có trứng khi spam có giá tiền nhiều hơn)\n• tự động chọn venyx & xóa bảng discord"
+        contentLabel.TextColor3 = Color3.fromRGB(235, 235, 245)
+        contentLabel.TextSize = 12
+        contentLabel.TextWrapped = true
 
-        local InfoHolder = Instance.new("Frame", MainFrame)
-        InfoHolder.Position = UDim2.new(0, 15, 0, 172)
-        InfoHolder.Size = UDim2.new(1, -30, 0, 42)
-        InfoHolder.BackgroundColor3 = Color3.fromRGB(22, 18, 25)
-        InfoHolder.BorderSizePixel = 0
-        Instance.new("UICorner", InfoHolder).CornerRadius = UDim.new(0, 10)
+        local infoHolder = Instance.new("Frame", mainFrame)
+        infoHolder.Position = UDim2.new(0, 15, 0, 172)
+        infoHolder.Size = UDim2.new(1, -30, 0, 42)
+        infoHolder.BackgroundColor3 = Color3.fromRGB(22, 18, 25)
+        infoHolder.BorderSizePixel = 0
+        Instance.new("UICorner", infoHolder).CornerRadius = UDim.new(0, 10)
 
-        local AdminText = Instance.new("TextLabel", InfoHolder)
-        AdminText.Position = UDim2.new(0, 12, 0, 0)
-        AdminText.Size = UDim2.new(1, -24, 1, 0)
-        AdminText.BackgroundTransparency = 1
-        AdminText.Font = Enum.Font.GothamBold
-        AdminText.TextXAlignment = Enum.TextXAlignment.Left
-        AdminText.Text = "👑 Admin: Nice"
-        AdminText.TextColor3 = Color3.fromRGB(255, 210, 100)
-        AdminText.TextSize = 12
+        local adminText = Instance.new("TextLabel", infoHolder)
+        adminText.Position = UDim2.new(0, 12, 0, 0)
+        adminText.Size = UDim2.new(1, -24, 1, 0)
+        adminText.BackgroundTransparency = 1
+        adminText.Font = Enum.Font.GothamBold
+        adminText.TextXAlignment = Enum.TextXAlignment.Left
+        adminText.Text = "admin: nice"
+        adminText.TextColor3 = Color3.fromRGB(255, 210, 100)
+        adminText.TextSize = 12
 
-        local CloseBtn = Instance.new("TextButton", MainFrame)
-        CloseBtn.Position = UDim2.new(0.5, -80, 1, -45)
-        CloseBtn.Size = UDim2.new(0, 160, 0, 32)
-        CloseBtn.BackgroundColor3 = Color3.fromRGB(210, 50, 70)
-        CloseBtn.BorderSizePixel = 0
-        CloseBtn.Font = Enum.Font.GothamBold
-        CloseBtn.Text = "Trải Nghiệm Ngay"
-        CloseBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-        CloseBtn.TextSize = 12
-        Instance.new("UICorner", CloseBtn).CornerRadius = UDim.new(0, 10)
+        local closeBtn = Instance.new("TextButton", mainFrame)
+        closeBtn.Position = UDim2.new(0.5, -80, 1, -45)
+        closeBtn.Size = UDim2.new(0, 160, 0, 32)
+        closeBtn.BackgroundColor3 = Color3.fromRGB(210, 50, 70)
+        closeBtn.BorderSizePixel = 0
+        closeBtn.Font = Enum.Font.GothamBold
+        closeBtn.Text = "trải nghiệm ngay"
+        closeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+        closeBtn.TextSize = 12
+        Instance.new("UICorner", closeBtn).CornerRadius = UDim.new(0, 10)
 
-        CloseBtn.MouseButton1Click:Connect(function()
-            ScreenGui:Destroy()
+        closeBtn.MouseButton1Click:Connect(function()
+            screenGui:Destroy()
         end)
     end)
 
     task.spawn(function()
         while task.wait(0.05) do
-            local containers = { CoreGui, LocalPlayer:FindFirstChild("PlayerGui") }
+            local containers = { coreGui, localPlayer:FindFirstChild("PlayerGui") }
             for _, container in ipairs(containers) do
                 if container then
                     for _, gui in ipairs(container:GetDescendants()) do
@@ -143,25 +150,25 @@ local function LaunchMainScript()
                                 end
 
                                 if text:find("CHILLI") or text:find("Venyx") or text:find("Chilli") then
-                                    if text ~= "NiceXchilli v7.2" and not text:find("NiceXchilli") and not text:find("Chilli Hub") then
+                                    if text ~= "nicexchilli v7.2" and not text:find("nicexchilli") and not text:find("Chilli Hub") then
                                         if text:find("/") then
                                             local parts = {}
                                             for part in string.gmatch(text, "[^/]+") do
                                                 table.insert(parts, part:match("^%s*(.-)%s*$"))
                                             end
                                             if #parts > 1 then
-                                                gui.Text = "NiceXchilli v7.2 / " .. parts[2]
+                                                gui.Text = "nicexchilli v7.2 / " .. parts[2]
                                             else
-                                                gui.Text = "NiceXchilli v7.2"
+                                                gui.Text = "nicexchilli v7.2"
                                             end
                                         else
-                                            gui.Text = "NiceXchilli v7.2"
+                                            gui.Text = "nicexchilli v7.2"
                                         end
                                     end
                                 end
 
                                 if text:find("CONFIG VENYX") or text:find("Config Venyx") or text:find("Venyx V2.1") then
-                                    gui.Text = "BẬT ⚙️ CONFIG NICE V7.2"
+                                    gui.Text = "bật config nice v7.2"
                                 end
                                 
                                 if text:find("DISCORD") or text:find("discord.gg") or text:find("THAM GIA DISCORD") then
@@ -182,231 +189,231 @@ local function LaunchMainScript()
         end
     end)
 
-    local function CreateServerHopGUI()
-        if CoreGui:FindFirstChild("NicePrimeServerHop") then
-            CoreGui.NicePrimeServerHop:Destroy()
+    local function createServerHopGUI()
+        if coreGui:FindFirstChild("NicePrimeServerHop") then
+            coreGui.NicePrimeServerHop:Destroy()
         end
 
-        local ScreenGui = Instance.new("ScreenGui", CoreGui)
-        ScreenGui.Name = "NicePrimeServerHop"
-        ScreenGui.ResetOnSpawn = false
+        local screenGui = Instance.new("ScreenGui", coreGui)
+        screenGui.Name = "NicePrimeServerHop"
+        screenGui.ResetOnSpawn = false
 
-        local MainFrame = Instance.new("Frame", ScreenGui)
-        MainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
-        MainFrame.BorderSizePixel = 0
-        MainFrame.Position = UDim2.new(0.5, -150, 0.5, -130)
-        MainFrame.Size = UDim2.new(0, 300, 0, 260)
-        MainFrame.Active = true
-        MainFrame.Draggable = true
-        Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0, 8)
+        local mainFrame = Instance.new("Frame", screenGui)
+        mainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
+        mainFrame.BorderSizePixel = 0
+        mainFrame.Position = UDim2.new(0.5, -150, 0.5, -130)
+        mainFrame.Size = UDim2.new(0, 300, 0, 260)
+        mainFrame.Active = true
+        mainFrame.Draggable = true
+        Instance.new("UICorner", mainFrame).CornerRadius = UDim.new(0, 8)
         
-        local Stroke = Instance.new("UIStroke", MainFrame)
-        Stroke.Color = Color3.fromRGB(255, 100, 100)
-        Stroke.Thickness = 1.5 
+        local stroke = Instance.new("UIStroke", mainFrame)
+        stroke.Color = Color3.fromRGB(255, 100, 100)
+        stroke.Thickness = 1.5 
 
-        local Title = Instance.new("TextLabel", MainFrame)
-        Title.Size = UDim2.new(1, 0, 0, 36)
-        Title.BackgroundColor3 = Color3.fromRGB(45, 30, 30)
-        Title.BorderSizePixel = 0
-        Title.Font = Enum.Font.GothamBold
-        Title.Text = "NiceXchilli v7.2"
-        Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-        Title.TextSize = 13
-        Instance.new("UICorner", Title).CornerRadius = UDim.new(0, 8)
+        local title = Instance.new("TextLabel", mainFrame)
+        title.Size = UDim2.new(1, 0, 0, 36)
+        title.BackgroundColor3 = Color3.fromRGB(45, 30, 30)
+        title.BorderSizePixel = 0
+        title.Font = Enum.Font.GothamBold
+        title.Text = "nicexchilli v7.2"
+        title.TextColor3 = Color3.fromRGB(255, 255, 255)
+        title.TextSize = 13
+        Instance.new("UICorner", title).CornerRadius = UDim.new(0, 8)
 
-        local CloseBtn = Instance.new("TextButton", MainFrame)
-        CloseBtn.BackgroundTransparency = 1
-        CloseBtn.Position = UDim2.new(1, -28, 0, 6)
-        CloseBtn.Size = UDim2.new(0, 22, 0, 22)
-        CloseBtn.Font = Enum.Font.GothamBold
-        CloseBtn.Text = "✕"
-        CloseBtn.TextColor3 = Color3.fromRGB(255, 70, 70)
-        CloseBtn.TextSize = 13
+        local closeBtn = Instance.new("TextButton", mainFrame)
+        closeBtn.BackgroundTransparency = 1
+        closeBtn.Position = UDim2.new(1, -28, 0, 6)
+        closeBtn.Size = UDim2.new(0, 22, 0, 22)
+        closeBtn.Font = Enum.Font.GothamBold
+        closeBtn.Text = "✕"
+        closeBtn.TextColor3 = Color3.fromRGB(255, 70, 70)
+        closeBtn.TextSize = 13
         
-        local ToggleButton = Instance.new("ImageButton", ScreenGui)
-        ToggleButton.Name = "ToggleHopButton"
-        ToggleButton.BackgroundColor3 = Color3.fromRGB(40, 30, 35)
-        ToggleButton.Position = UDim2.new(0, 20, 0.5, -25)
-        ToggleButton.Size = UDim2.new(0, 50, 0, 50)
-        ToggleButton.Image = CustomImageId
-        ToggleButton.Active = true
-        ToggleButton.Draggable = true
-        Instance.new("UICorner", ToggleButton).CornerRadius = UDim.new(1, 0)
-        local TBtnStroke = Instance.new("UIStroke", ToggleButton)
-        TBtnStroke.Color = Color3.fromRGB(255, 100, 100)
-        TBtnStroke.Thickness = 1.5
+        local toggleButton = Instance.new("ImageButton", screenGui)
+        toggleButton.Name = "ToggleHopButton"
+        toggleButton.BackgroundColor3 = Color3.fromRGB(40, 30, 35)
+        toggleButton.Position = UDim2.new(0, 20, 0.5, -25)
+        toggleButton.Size = UDim2.new(0, 50, 0, 50)
+        toggleButton.Image = customImageId
+        toggleButton.Active = true
+        toggleButton.Draggable = true
+        Instance.new("UICorner", toggleButton).CornerRadius = UDim.new(1, 0)
+        local tBtnStroke = Instance.new("UIStroke", toggleButton)
+        tBtnStroke.Color = Color3.fromRGB(255, 100, 100)
+        tBtnStroke.Thickness = 1.5
 
-        CloseBtn.MouseButton1Click:Connect(function()
-            MainFrame.Visible = false
-            ToggleButton.Visible = true
+        closeBtn.MouseButton1Click:Connect(function()
+            mainFrame.Visible = false
+            toggleButton.Visible = true
         end)
 
-        ToggleButton.MouseButton1Click:Connect(function()
-            MainFrame.Visible = true
-            ToggleButton.Visible = false
+        toggleButton.MouseButton1Click:Connect(function()
+            mainFrame.Visible = true
+            toggleButton.Visible = false
         end)
 
         local tabWidth = isAuthorizedAdmin and 90 or 135
         
-        local TabHopBtn = Instance.new("TextButton", MainFrame)
-        TabHopBtn.Position = UDim2.new(0, 8, 0, 45)
-        TabHopBtn.Size = UDim2.new(0, tabWidth, 0, 28)
-        TabHopBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
-        TabHopBtn.BorderSizePixel = 0
-        TabHopBtn.Font = Enum.Font.GothamBold
-        TabHopBtn.Text = "Đổi Server"
-        TabHopBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-        TabHopBtn.TextSize = 11
-        Instance.new("UICorner", TabHopBtn).CornerRadius = UDim.new(0, 6)
+        local tabHopBtn = Instance.new("TextButton", mainFrame)
+        tabHopBtn.Position = UDim2.new(0, 8, 0, 45)
+        tabHopBtn.Size = UDim2.new(0, tabWidth, 0, 28)
+        tabHopBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
+        tabHopBtn.BorderSizePixel = 0
+        tabHopBtn.Font = Enum.Font.GothamBold
+        tabHopBtn.Text = "đổi server"
+        tabHopBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+        tabHopBtn.TextSize = 11
+        Instance.new("UICorner", tabHopBtn).CornerRadius = UDim.new(0, 6)
 
-        local TabLagBtn = Instance.new("TextButton", MainFrame)
-        TabLagBtn.Position = UDim2.new(0, isAuthorizedAdmin and 103 or 148, 0, 45)
-        TabLagBtn.Size = UDim2.new(0, tabWidth, 0, 28)
-        TabLagBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
-        TabLagBtn.BorderSizePixel = 0
-        TabLagBtn.Font = Enum.Font.GothamBold
-        TabLagBtn.Text = "Fix Lag"
-        TabLagBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
-        TabLagBtn.TextSize = 11
-        Instance.new("UICorner", TabLagBtn).CornerRadius = UDim.new(0, 6)
+        local tabLagBtn = Instance.new("TextButton", mainFrame)
+        tabLagBtn.Position = UDim2.new(0, isAuthorizedAdmin and 103 or 148, 0, 45)
+        tabLagBtn.Size = UDim2.new(0, tabWidth, 0, 28)
+        tabLagBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+        tabLagBtn.BorderSizePixel = 0
+        tabLagBtn.Font = Enum.Font.GothamBold
+        tabLagBtn.Text = "fix lag"
+        tabLagBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
+        tabLagBtn.TextSize = 11
+        Instance.new("UICorner", tabLagBtn).CornerRadius = UDim.new(0, 6)
 
-        local TabChatBtn = Instance.new("TextButton", MainFrame)
-        TabChatBtn.Position = UDim2.new(0, 198, 0, 45)
-        TabChatBtn.Size = UDim2.new(0, 90, 0, 28)
-        TabChatBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
-        TabChatBtn.BorderSizePixel = 0
-        TabChatBtn.Font = Enum.Font.GothamBold
-        TabChatBtn.Text = "Admin Chat"
-        TabChatBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
-        TabChatBtn.TextSize = 11
-        Instance.new("UICorner", TabChatBtn).CornerRadius = UDim.new(0, 6)
+        local tabChatBtn = Instance.new("TextButton", mainFrame)
+        tabChatBtn.Position = UDim2.new(0, 198, 0, 45)
+        tabChatBtn.Size = UDim2.new(0, 90, 0, 28)
+        tabChatBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+        tabChatBtn.BorderSizePixel = 0
+        tabChatBtn.Font = Enum.Font.GothamBold
+        tabChatBtn.Text = "admin chat"
+        tabChatBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
+        tabChatBtn.TextSize = 11
+        Instance.new("UICorner", tabChatBtn).CornerRadius = UDim.new(0, 6)
         
         if not isAuthorizedAdmin then
-            TabChatBtn.Visible = false
-            TabHopBtn.Size = UDim2.new(0, 138, 0, 28)
-            TabLagBtn.Position = UDim2.new(0, 150, 0, 45)
-            TabLagBtn.Size = UDim2.new(0, 138, 0, 28)
+            tabChatBtn.Visible = false
+            tabHopBtn.Size = UDim2.new(0, 138, 0, 28)
+            tabLagBtn.Position = UDim2.new(0, 150, 0, 45)
+            tabLagBtn.Size = UDim2.new(0, 138, 0, 28)
         end
 
-        local HopContainer = Instance.new("Frame", MainFrame)
-        HopContainer.Position = UDim2.new(0, 0, 0, 80)
-        HopContainer.Size = UDim2.new(1, 0, 1, -80)
-        HopContainer.BackgroundTransparency = 1
-        HopContainer.Visible = true
+        local hopContainer = Instance.new("Frame", mainFrame)
+        hopContainer.Position = UDim2.new(0, 0, 0, 80)
+        hopContainer.Size = UDim2.new(1, 0, 1, -80)
+        hopContainer.BackgroundTransparency = 1
+        hopContainer.Visible = true
 
-        local NowLabel = Instance.new("TextLabel", HopContainer)
-        NowLabel.Position = UDim2.new(0, 10, 0, 5)
-        NowLabel.Size = UDim2.new(1, -20, 0, 22)
-        NowLabel.BackgroundTransparency = 1
-        NowLabel.Font = Enum.Font.GothamBold
-        NowLabel.TextXAlignment = Enum.TextXAlignment.Left
-        NowLabel.TextColor3 = Color3.fromRGB(100, 220, 100)
-        NowLabel.TextSize = 12
+        local nowLabel = Instance.new("TextLabel", hopContainer)
+        nowLabel.Position = UDim2.new(0, 10, 0, 5)
+        nowLabel.Size = UDim2.new(1, -20, 0, 22)
+        nowLabel.BackgroundTransparency = 1
+        nowLabel.Font = Enum.Font.GothamBold
+        nowLabel.TextXAlignment = Enum.TextXAlignment.Left
+        nowLabel.TextColor3 = Color3.fromRGB(100, 220, 100)
+        nowLabel.TextSize = 12
 
-        local StatusLabel = Instance.new("TextLabel", HopContainer)
-        StatusLabel.Position = UDim2.new(0, 10, 0, 30)
-        StatusLabel.Size = UDim2.new(1, -20, 0, 25)
-        StatusLabel.BackgroundTransparency = 1
-        StatusLabel.Font = Enum.Font.Gotham
-        StatusLabel.TextXAlignment = Enum.TextXAlignment.Left
-        StatusLabel.TextColor3 = Color3.fromRGB(180, 180, 180)
-        StatusLabel.TextSize = 11
-        StatusLabel.TextWrapped = true
+        local statusLabel = Instance.new("TextLabel", hopContainer)
+        statusLabel.Position = UDim2.new(0, 10, 0, 30)
+        statusLabel.Size = UDim2.new(1, -20, 0, 25)
+        statusLabel.BackgroundTransparency = 1
+        statusLabel.Font = Enum.Font.Gotham
+        statusLabel.TextXAlignment = Enum.TextXAlignment.Left
+        statusLabel.TextColor3 = Color3.fromRGB(180, 180, 180)
+        statusLabel.TextSize = 11
+        statusLabel.TextWrapped = true
 
-        local MaxLabel = Instance.new("TextLabel", HopContainer)
-        MaxLabel.Position = UDim2.new(0, 10, 0, 60)
-        MaxLabel.Size = UDim2.new(1, -20, 0, 18)
-        MaxLabel.BackgroundTransparency = 1
-        MaxLabel.Font = Enum.Font.Gotham
-        MaxLabel.TextXAlignment = Enum.TextXAlignment.Left
-        MaxLabel.TextColor3 = Color3.fromRGB(160, 160, 160)
-        MaxLabel.TextSize = 11
-        MaxLabel.Text = "Đổi server nếu số người vượt quá:"
+        local maxLabel = Instance.new("TextLabel", hopContainer)
+        maxLabel.Position = UDim2.new(0, 10, 0, 60)
+        maxLabel.Size = UDim2.new(1, -20, 0, 18)
+        maxLabel.BackgroundTransparency = 1
+        maxLabel.Font = Enum.Font.Gotham
+        maxLabel.TextXAlignment = Enum.TextXAlignment.Left
+        maxLabel.TextColor3 = Color3.fromRGB(160, 160, 160)
+        maxLabel.TextSize = 11
+        maxLabel.Text = "đổi server nếu số người vượt quá:"
 
-        local MaxBox = Instance.new("TextBox", HopContainer)
-        MaxBox.Position = UDim2.new(0, 10, 0, 82)
-        MaxBox.Size = UDim2.new(1, -20, 0, 26)
-        MaxBox.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
-        MaxBox.BorderSizePixel = 0
-        MaxBox.Font = Enum.Font.GothamBold
-        MaxBox.Text = "1"
-        MaxBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-        MaxBox.TextSize = 13
-        MaxBox.ClearTextOnFocus = false
-        Instance.new("UICorner", MaxBox).CornerRadius = UDim.new(0, 6)
+        local maxBox = Instance.new("TextBox", hopContainer)
+        maxBox.Position = UDim2.new(0, 10, 0, 82)
+        maxBox.Size = UDim2.new(1, -20, 0, 26)
+        maxBox.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+        maxBox.BorderSizePixel = 0
+        maxBox.Font = Enum.Font.GothamBold
+        maxBox.Text = "1"
+        maxBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+        maxBox.TextSize = 13
+        maxBox.ClearTextOnFocus = false
+        Instance.new("UICorner", maxBox).CornerRadius = UDim.new(0, 6)
 
-        local HopBtn = Instance.new("TextButton", HopContainer)
-        HopBtn.Position = UDim2.new(0, 10, 0, 118)
-        HopBtn.Size = UDim2.new(0, 130, 0, 38)
-        HopBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
-        HopBtn.BorderSizePixel = 0
-        HopBtn.Font = Enum.Font.GothamBold
-        HopBtn.Text = "Đổi Server Ngay"
-        HopBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-        HopBtn.TextSize = 12
-        Instance.new("UICorner", HopBtn).CornerRadius = UDim.new(0, 6)
+        local hopBtn = Instance.new("TextButton", hopContainer)
+        hopBtn.Position = UDim2.new(0, 10, 0, 118)
+        hopBtn.Size = UDim2.new(0, 130, 0, 38)
+        hopBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
+        hopBtn.BorderSizePixel = 0
+        hopBtn.Font = Enum.Font.GothamBold
+        hopBtn.Text = "đổi server ngay"
+        hopBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+        hopBtn.TextSize = 12
+        Instance.new("UICorner", hopBtn).CornerRadius = UDim.new(0, 6)
 
-        local AutoBtn = Instance.new("TextButton", HopContainer)
-        AutoBtn.Position = UDim2.new(0, 150, 0, 118)
-        AutoBtn.Size = UDim2.new(0, 140, 0, 38)
-        AutoBtn.BackgroundColor3 = Color3.fromRGB(40, 120, 70)
-        AutoBtn.BorderSizePixel = 0
-        AutoBtn.Font = Enum.Font.GothamBold
-        AutoBtn.Text = "Tự Động Hop: TẮT"
-        AutoBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-        AutoBtn.TextSize = 11
-        Instance.new("UICorner", AutoBtn).CornerRadius = UDim.new(0, 6)
+        local autoBtn = Instance.new("TextButton", hopContainer)
+        autoBtn.Position = UDim2.new(0, 150, 0, 118)
+        autoBtn.Size = UDim2.new(0, 140, 0, 38)
+        autoBtn.BackgroundColor3 = Color3.fromRGB(40, 120, 70)
+        autoBtn.BorderSizePixel = 0
+        autoBtn.Font = Enum.Font.GothamBold
+        autoBtn.Text = "tự động hop: tắt"
+        autoBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+        autoBtn.TextSize = 11
+        Instance.new("UICorner", autoBtn).CornerRadius = UDim.new(0, 6)
 
-        local LagContainer = Instance.new("Frame", MainFrame)
-        LagContainer.Position = UDim2.new(0, 0, 0, 80)
-        LagContainer.Size = UDim2.new(1, 0, 1, -80)
-        LagContainer.BackgroundTransparency = 1
-        LagContainer.Visible = false
+        local lagContainer = Instance.new("Frame", mainFrame)
+        lagContainer.Position = UDim2.new(0, 0, 0, 80)
+        lagContainer.Size = UDim2.new(1, 0, 1, -80)
+        lagContainer.BackgroundTransparency = 1
+        lagContainer.Visible = false
 
-        local ReduceGfxBtn = Instance.new("TextButton", LagContainer)
-        ReduceGfxBtn.Position = UDim2.new(0, 15, 0, 15)
-        ReduceGfxBtn.Size = UDim2.new(1, -30, 0, 42)
-        ReduceGfxBtn.BackgroundColor3 = Color3.fromRGB(40, 120, 180)
-        ReduceGfxBtn.BorderSizePixel = 0
-        ReduceGfxBtn.Font = Enum.Font.GothamBold
-        ReduceGfxBtn.Text = "⚡ Giảm Đồ Họa & Tắt Đổ Bóng"
-        ReduceGfxBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-        ReduceGfxBtn.TextSize = 12
-        Instance.new("UICorner", ReduceGfxBtn).CornerRadius = UDim.new(0, 6)
+        local reduceGfxBtn = Instance.new("TextButton", lagContainer)
+        reduceGfxBtn.Position = UDim2.new(0, 15, 0, 15)
+        reduceGfxBtn.Size = UDim2.new(1, -30, 0, 42)
+        reduceGfxBtn.BackgroundColor3 = Color3.fromRGB(40, 120, 180)
+        reduceGfxBtn.BorderSizePixel = 0
+        reduceGfxBtn.Font = Enum.Font.GothamBold
+        reduceGfxBtn.Text = "⚡ giảm đồ họa & tắt đổ bóng"
+        reduceGfxBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+        reduceGfxBtn.TextSize = 12
+        Instance.new("UICorner", reduceGfxBtn).CornerRadius = UDim.new(0, 6)
 
-        local BoostFpsBtn = Instance.new("TextButton", LagContainer)
-        BoostFpsBtn.Position = UDim2.new(0, 15, 0, 68)
-        BoostFpsBtn.Size = UDim2.new(1, -30, 0, 42)
-        BoostFpsBtn.BackgroundColor3 = Color3.fromRGB(50, 160, 90)
-        BoostFpsBtn.BorderSizePixel = 0
-        BoostFpsBtn.Font = Enum.Font.GothamBold
-        BoostFpsBtn.Text = "🚀 Tối Ưu Hóa FPS (Boost Game)"
-        BoostFpsBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-        BoostFpsBtn.TextSize = 12
-        Instance.new("UICorner", BoostFpsBtn).CornerRadius = UDim.new(0, 6)
+        local boostFpsBtn = Instance.new("TextButton", lagContainer)
+        boostFpsBtn.Position = UDim2.new(0, 15, 0, 68)
+        boostFpsBtn.Size = UDim2.new(1, -30, 0, 42)
+        boostFpsBtn.BackgroundColor3 = Color3.fromRGB(50, 160, 90)
+        boostFpsBtn.BorderSizePixel = 0
+        boostFpsBtn.Font = Enum.Font.GothamBold
+        boostFpsBtn.Text = "🚀 tối ưu hóa fps (boost game)"
+        boostFpsBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+        boostFpsBtn.TextSize = 12
+        Instance.new("UICorner", boostFpsBtn).CornerRadius = UDim.new(0, 6)
 
-        ReduceGfxBtn.MouseButton1Click:Connect(function()
+        reduceGfxBtn.MouseButton1Click:Connect(function()
             pcall(function()
-                Lighting.GlobalShadows = false
-                Lighting.FogEnd = 999999
-                for _, v in ipairs(Lighting:GetChildren()) do
+                lighting.GlobalShadows = false
+                lighting.FogEnd = 999999
+                for _, v in ipairs(lighting:GetChildren()) do
                     if v:IsA("PostEffect") or v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("SunRaysEffect") then
                         v.Enabled = false
                     end
                 end
-                if Terrain then
-                    Terrain.WaterWaveSize = 0
-                    Terrain.WaterWaveSpeed = 0
-                    Terrain.WaterTransparency = 0
-                    Terrain.WaterReflectance = 0
+                if terrain then
+                    terrain.WaterWaveSize = 0
+                    terrain.WaterWaveSpeed = 0
+                    terrain.WaterTransparency = 0
+                    terrain.WaterReflectance = 0
                 end
             end)
-            ReduceGfxBtn.Text = "✓ Đã Giảm Đồ Họa Thành Công!"
+            reduceGfxBtn.Text = "✓ đã giảm đồ họa thành công!"
             task.wait(1.5)
-            ReduceGfxBtn.Text = "⚡ Giảm Đồ Họa & Tắt Đổ Bóng"
+            reduceGfxBtn.Text = "⚡ giảm đồ họa & tắt đổ bóng"
         end)
 
-        BoostFpsBtn.MouseButton1Click:Connect(function()
+        boostFpsBtn.MouseButton1Click:Connect(function()
             pcall(function()
                 settings().Rendering.QualityLevel = Enum.QualityLevel.Level01
                 for _, obj in ipairs(game:GetDescendants()) do
@@ -418,96 +425,96 @@ local function LaunchMainScript()
                     end
                 end
             end)
-            BoostFpsBtn.Text = "✓ Đã Tăng FPS Tối Đa!"
+            boostFpsBtn.Text = "✓ đã tăng fps tối đa!"
             task.wait(1.5)
-            BoostFpsBtn.Text = "🚀 Tối Ưu Hóa FPS (Boost Game)"
+            boostFpsBtn.Text = "🚀 tối ưu hóa fps (boost game)"
         end)
 
-        local ChatContainer = Instance.new("Frame", MainFrame)
-        ChatContainer.Position = UDim2.new(0, 0, 0, 80)
-        ChatContainer.Size = UDim2.new(1, 0, 1, -80)
-        ChatContainer.BackgroundTransparency = 1
-        ChatContainer.Visible = false
+        local chatContainer = Instance.new("Frame", mainFrame)
+        chatContainer.Position = UDim2.new(0, 0, 0, 80)
+        chatContainer.Size = UDim2.new(1, 0, 1, -80)
+        chatContainer.BackgroundTransparency = 1
+        chatContainer.Visible = false
 
-        local ChatScroll = Instance.new("ScrollingFrame", ChatContainer)
-        ChatScroll.Position = UDim2.new(0, 10, 0, 5)
-        ChatScroll.Size = UDim2.new(1, -20, 0, 110)
-        ChatScroll.BackgroundColor3 = Color3.fromRGB(15, 15, 25)
-        ChatScroll.BorderSizePixel = 0
-        ChatScroll.CanvasSize = UDim2.new(0, 0, 2, 0)
-        Instance.new("UICorner", ChatScroll).CornerRadius = UDim.new(0, 6)
+        local chatScroll = Instance.new("ScrollingFrame", chatContainer)
+        chatScroll.Position = UDim2.new(0, 10, 0, 5)
+        chatScroll.Size = UDim2.new(1, -20, 0, 110)
+        chatScroll.BackgroundColor3 = Color3.fromRGB(15, 15, 25)
+        chatScroll.BorderSizePixel = 0
+        chatScroll.CanvasSize = UDim2.new(0, 0, 2, 0)
+        Instance.new("UICorner", chatScroll).CornerRadius = UDim.new(0, 6)
 
-        local UIList = Instance.new("UIListLayout", ChatScroll)
-        UIList.SortOrder = Enum.SortOrder.LayoutOrder
-        UIList.Padding = UDim.new(0, 4)
+        local uiList = Instance.new("UIListLayout", chatScroll)
+        uiList.SortOrder = Enum.SortOrder.LayoutOrder
+        uiList.Padding = UDim.new(0, 4)
 
-        local ChatBox = Instance.new("TextBox", ChatContainer)
-        ChatBox.Position = UDim2.new(0, 10, 0, 122)
-        ChatBox.Size = UDim2.new(1, -85, 0, 32)
-        ChatBox.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
-        ChatBox.BorderSizePixel = 0
-        ChatBox.Font = Enum.Font.Gotham
-        ChatBox.PlaceholderText = "Nhập nội dung thông điệp..."
-        ChatBox.Text = ""
-        ChatBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-        ChatBox.TextSize = 12
-        Instance.new("UICorner", ChatBox).CornerRadius = UDim.new(0, 6)
+        local chatBox = Instance.new("TextBox", chatContainer)
+        chatBox.Position = UDim2.new(0, 10, 0, 122)
+        chatBox.Size = UDim2.new(1, -85, 0, 32)
+        chatBox.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+        chatBox.BorderSizePixel = 0
+        chatBox.Font = Enum.Font.Gotham
+        chatBox.PlaceholderText = "nhập nội dung thông điệp..."
+        chatBox.Text = ""
+        chatBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+        chatBox.TextSize = 12
+        Instance.new("UICorner", chatBox).CornerRadius = UDim.new(0, 6)
 
-        local SendBtn = Instance.new("TextButton", ChatContainer)
-        SendBtn.Position = UDim2.new(1, -70, 0, 122)
-        SendBtn.Size = UDim2.new(0, 60, 0, 32)
-        SendBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
-        SendBtn.BorderSizePixel = 0
-        SendBtn.Font = Enum.Font.GothamBold
-        SendBtn.Text = "Gửi"
-        SendBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-        SendBtn.TextSize = 12
-        Instance.new("UICorner", SendBtn).CornerRadius = UDim.new(0, 6)
+        local sendBtn = Instance.new("TextButton", chatContainer)
+        sendBtn.Position = UDim2.new(1, -70, 0, 122)
+        sendBtn.Size = UDim2.new(0, 60, 0, 32)
+        sendBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
+        sendBtn.BorderSizePixel = 0
+        sendBtn.Font = Enum.Font.GothamBold
+        sendBtn.Text = "gửi"
+        sendBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+        sendBtn.TextSize = 12
+        Instance.new("UICorner", sendBtn).CornerRadius = UDim.new(0, 6)
 
-        TabHopBtn.MouseButton1Click:Connect(function()
-            HopContainer.Visible = true
-            LagContainer.Visible = false
-            ChatContainer.Visible = false
-            TabHopBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
-            TabHopBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-            TabLagBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
-            TabLagBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
+        tabHopBtn.MouseButton1Click:Connect(function()
+            hopContainer.Visible = true
+            lagContainer.Visible = false
+            chatContainer.Visible = false
+            tabHopBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
+            tabHopBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+            tabLagBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+            tabLagBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
             if isAuthorizedAdmin then
-                TabChatBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
-                TabChatBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
+                tabChatBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+                tabChatBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
             end
         end)
 
-        TabLagBtn.MouseButton1Click:Connect(function()
-            HopContainer.Visible = false
-            LagContainer.Visible = true
-            ChatContainer.Visible = false
-            TabLagBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
-            TabLagBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-            TabHopBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
-            TabHopBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
+        tabLagBtn.MouseButton1Click:Connect(function()
+            hopContainer.Visible = false
+            lagContainer.Visible = true
+            chatContainer.Visible = false
+            tabLagBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
+            tabLagBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+            tabHopBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+            tabHopBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
             if isAuthorizedAdmin then
-                TabChatBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
-                TabChatBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
+                tabChatBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+                tabChatBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
             end
         end)
 
         if isAuthorizedAdmin then
-            TabChatBtn.MouseButton1Click:Connect(function()
-                HopContainer.Visible = false
-                LagContainer.Visible = false
-                ChatContainer.Visible = true
-                TabChatBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
-                TabChatBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-                TabHopBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
-                TabHopBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
-                TabLagBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
-                TabLagBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
+            tabChatBtn.MouseButton1Click:Connect(function()
+                hopContainer.Visible = false
+                lagContainer.Visible = false
+                chatContainer.Visible = true
+                tabChatBtn.BackgroundColor3 = Color3.fromRGB(180, 60, 60)
+                tabChatBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+                tabHopBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+                tabHopBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
+                tabLagBtn.BackgroundColor3 = Color3.fromRGB(35, 35, 55)
+                tabLagBtn.TextColor3 = Color3.fromRGB(180, 180, 180)
             end)
 
             local function addLogMessage(sender, msg)
                 local msgLabel = Instance.new("TextLabel")
-                msgLabel.Parent = ChatScroll
+                msgLabel.Parent = chatScroll
                 msgLabel.Size = UDim2.new(1, -5, 0, 20)
                 msgLabel.BackgroundTransparency = 1
                 msgLabel.Font = Enum.Font.GothamBold
@@ -515,15 +522,15 @@ local function LaunchMainScript()
                 msgLabel.Text = "[" .. sender .. "]: " .. msg
                 msgLabel.TextColor3 = Color3.fromRGB(255, 150, 150)
                 msgLabel.TextSize = 11
-                ChatScroll.CanvasSize = UDim2.new(0, 0, 0, UIList.AbsoluteContentSize.Y + 10)
+                chatScroll.CanvasSize = UDim2.new(0, 0, 0, uiList.AbsoluteContentSize.Y + 10)
             end
 
-            addLogMessage("Hệ Thống", "Admin Chat NiceXChilli v7.2 đã sẵn sàng.")
+            addLogMessage("hệ thống", "admin chat nicexchilli v7.2 đã sẵn sàng.")
 
-            SendBtn.MouseButton1Click:Connect(function()
-                if ChatBox.Text ~= "" then
-                    local content = ChatBox.Text
-                    local senderName = LocalPlayer.Name
+            sendBtn.MouseButton1Click:Connect(function()
+                if chatBox.Text ~= "" then
+                    local content = chatBox.Text
+                    local senderName = localPlayer.Name
                     
                     addLogMessage(senderName, content)
                     
@@ -531,24 +538,24 @@ local function LaunchMainScript()
                         game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(content, "All")
                     end)
                     
-                    ChatBox.Text = ""
+                    chatBox.Text = ""
                 end
             end)
         end
 
         task.spawn(function()
-            while ScreenGui.Parent do
-                local count = #Players:GetPlayers()
-                NowLabel.Text = "Số người ở server hiện tại: " .. count
+            while screenGui.Parent do
+                local count = #players:GetPlayers()
+                nowLabel.Text = "số người ở server hiện tại: " .. count
                 task.wait(1)
             end
         end)
 
         local function getRandomServer()
-            local url = "https://games.roblox.com/v1/games/" .. PlaceId .. "/servers/Public?sortOrder=Asc&limit=100"
+            local url = "https://games.roblox.com/v1/games/" .. placeId .. "/servers/Public?sortOrder=Asc&limit=100"
             local ok, raw = pcall(function() return game:HttpGet(url) end)
             if not ok or not raw or raw == "" then return nil end
-            local ok2, data = pcall(HttpService.JSONDecode, HttpService, raw)
+            local ok2, data = pcall(httpService.JSONDecode, httpService, raw)
             if not ok2 or not data or not data.data or #data.data == 0 then return nil end
             local currentId = tostring(game.JobId)
             local candidates = {}
@@ -562,53 +569,53 @@ local function LaunchMainScript()
         end
 
         local function hopOnce()
-            local threshold = math.max(1, math.floor(tonumber(MaxBox.Text) or 1))
-            local currentCount = #Players:GetPlayers()
+            local threshold = math.max(1, math.floor(tonumber(maxBox.Text) or 1))
+            local currentCount = #players:GetPlayers()
             if currentCount <= threshold then
-                StatusLabel.Text = "✓ Server có " .. currentCount .. " người. Không cần hop."
-                StatusLabel.TextColor3 = Color3.fromRGB(100, 220, 100)
+                statusLabel.Text = "✓ server có " .. currentCount .. " người. không cần hop."
+                statusLabel.TextColor3 = Color3.fromRGB(100, 220, 100)
                 return false
             end
-            StatusLabel.Text = "Đang tìm server khác..."
-            StatusLabel.TextColor3 = Color3.fromRGB(255, 200, 50)
+            statusLabel.Text = "đang tìm server khác..."
+            statusLabel.TextColor3 = Color3.fromRGB(255, 200, 50)
             task.wait(0.5)
             local serverId = getRandomServer()
             if not serverId then
-                StatusLabel.Text = "Lỗi lấy danh sách server!"
-                StatusLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
+                statusLabel.Text = "lỗi lấy danh sách server!"
+                statusLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
                 return false
             end
-            StatusLabel.Text = "Đang chuyển server..."
-            StatusLabel.TextColor3 = Color3.fromRGB(120, 180, 255)
+            statusLabel.Text = "đang chuyển server..."
+            statusLabel.TextColor3 = Color3.fromRGB(120, 180, 255)
             task.wait(0.5)
             pcall(function()
-                TeleportService:TeleportToPlaceInstance(PlaceId, serverId, LocalPlayer)
+                teleportService:TeleportToPlaceInstance(placeId, serverId, localPlayer)
             end)
             return true
         end
 
-        HopBtn.MouseButton1Click:Connect(function()
-            HopBtn.Active = false
+        hopBtn.MouseButton1Click:Connect(function()
+            hopBtn.Active = false
             hopOnce()
             task.wait(2)
-            HopBtn.Active = true
+            hopBtn.Active = true
         end)
 
         local autoEnabled = false
         local autoThread = nil
 
-        AutoBtn.MouseButton1Click:Connect(function()
+        autoBtn.MouseButton1Click:Connect(function()
             autoEnabled = not autoEnabled
             if autoEnabled then
-                AutoBtn.Text = "Tự Động Hop: BẬT"
-                AutoBtn.BackgroundColor3 = Color3.fromRGB(180, 50, 50)
+                autoBtn.Text = "tự động hop: bật"
+                autoBtn.BackgroundColor3 = Color3.fromRGB(180, 50, 50)
                 autoThread = task.spawn(function()
-                    while autoEnabled and ScreenGui.Parent do
-                        local threshold = math.max(1, math.floor(tonumber(MaxBox.Text) or 1))
-                        local count = #Players:GetPlayers()
+                    while autoEnabled and screenGui.Parent do
+                        local threshold = math.max(1, math.floor(tonumber(maxBox.Text) or 1))
+                        local count = #players:GetPlayers()
                         if count <= threshold then
-                            StatusLabel.Text = "✓ Đang ở mức phù hợp (" .. count .. " người). Chờ..."
-                            StatusLabel.TextColor3 = Color3.fromRGB(100, 220, 100)
+                            statusLabel.Text = "✓ đang ở mức phù hợp (" .. count .. " người). chờ..."
+                            statusLabel.TextColor3 = Color3.fromRGB(100, 220, 100)
                             task.wait(3)
                         else
                             hopOnce()
@@ -617,113 +624,196 @@ local function LaunchMainScript()
                     end
                 end)
             else
-                AutoBtn.Text = "Tự Động Hop: TẮT"
-                AutoBtn.BackgroundColor3 = Color3.fromRGB(40, 120, 70)
+                autoBtn.Text = "tự động hop: tắt"
+                autoBtn.BackgroundColor3 = Color3.fromRGB(40, 120, 70)
                 if autoThread then
                     task.cancel(autoThread)
                     autoThread = nil
                 end
-                StatusLabel.Text = "Đã tắt Tự Động Hop."
-                StatusLabel.TextColor3 = Color3.fromRGB(180, 180, 180)
+                statusLabel.Text = "đã tắt tự động hop."
+                statusLabel.TextColor3 = Color3.fromRGB(180, 180, 180)
             end
         end)
     end
 
     task.spawn(function()
         task.wait(0.5)
-        CreateServerHopGUI()
+        createServerHopGUI()
     end)
 end
 
 -- =========================================================================
--- 🔑 KEY SYSTEM 4K 4D (ĐÃ XÓA SẠCH DÒNG GỢI Ý DƯỚI CÙNG)
+-- 🔑 key system 4k 4d (v7.2 code to free key - có content-creatos)
 -- =========================================================================
-local function ShowKeySystem()
-    if CoreGui:FindFirstChild("NiceKeySystemGui") then
-        CoreGui.NiceKeySystemGui:Destroy()
+local function showKeySystem()
+    if coreGui:FindFirstChild("NiceKeySystemGui") then
+        coreGui.NiceKeySystemGui:Destroy()
     end
 
-    local ScreenGui = Instance.new("ScreenGui", CoreGui)
-    ScreenGui.Name = "NiceKeySystemGui"
-    ScreenGui.ResetOnSpawn = false
+    local screenGui = Instance.new("ScreenGui", coreGui)
+    screenGui.Name = "NiceKeySystemGui"
+    screenGui.ResetOnSpawn = false
 
-    local MainFrame = Instance.new("Frame", ScreenGui)
-    MainFrame.BackgroundColor3 = Color3.fromRGB(14, 14, 22)
-    MainFrame.BorderSizePixel = 0
-    MainFrame.Position = UDim2.new(0.5, -180, 0.5, -95)
-    MainFrame.Size = UDim2.new(0, 360, 0, 195)
-    MainFrame.Active = true
-    MainFrame.Draggable = true
-    Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0, 16)
+    local mainFrame = Instance.new("Frame", screenGui)
+    mainFrame.BackgroundColor3 = Color3.fromRGB(14, 14, 22)
+    mainFrame.BorderSizePixel = 0
+    mainFrame.Position = UDim2.new(0.5, -190, 0.5, -150)
+    mainFrame.Size = UDim2.new(0, 380, 0, 300)
+    mainFrame.Active = true
+    mainFrame.Draggable = true
+    Instance.new("UICorner", mainFrame).CornerRadius = UDim.new(0, 16)
     
-    local Stroke = Instance.new("UIStroke", MainFrame)
-    Stroke.Color = Color3.fromRGB(255, 90, 130)
-    Stroke.Thickness = 2.5
+    local stroke = Instance.new("UIStroke", mainFrame)
+    stroke.Color = Color3.fromRGB(255, 90, 130)
+    stroke.Thickness = 2.5
 
-    local Title = Instance.new("TextLabel", MainFrame)
-    Title.Size = UDim2.new(1, 0, 0, 42)
-    Title.BackgroundColor3 = Color3.fromRGB(35, 20, 32)
-    Title.BorderSizePixel = 0
-    Title.Font = Enum.Font.GothamBold
-    Title.Text = "🔐 KEY SYSTEM - NICE CHILLI V7.2"
-    Title.TextColor3 = Color3.fromRGB(255, 140, 165)
-    Title.TextSize = 13
-    Instance.new("UICorner", Title).CornerRadius = UDim.new(0, 16)
+    local title = Instance.new("TextLabel", mainFrame)
+    title.Size = UDim2.new(1, 0, 0, 38)
+    title.BackgroundColor3 = Color3.fromRGB(35, 20, 32)
+    title.BorderSizePixel = 0
+    title.Font = Enum.Font.GothamBold
+    title.Text = "🔐 key system - nice chilli v7.2"
+    title.TextColor3 = Color3.fromRGB(255, 140, 165)
+    title.TextSize = 13
+    Instance.new("UICorner", title).CornerRadius = UDim.new(0, 16)
 
-    local KeyBox = Instance.new("TextBox", MainFrame)
-    KeyBox.Position = UDim2.new(0, 15, 0, 58)
-    KeyBox.Size = UDim2.new(1, -30, 0, 38)
-    KeyBox.BackgroundColor3 = Color3.fromRGB(25, 25, 38)
-    KeyBox.BorderSizePixel = 0
-    KeyBox.Font = Enum.Font.Gotham
-    KeyBox.PlaceholderText = "Nhập Key..."
-    KeyBox.Text = ""
-    KeyBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-    KeyBox.TextSize = 12
-    KeyBox.ClearTextOnFocus = false
-    Instance.new("UICorner", KeyBox).CornerRadius = UDim.new(0, 10)
-    local BoxStroke = Instance.new("UIStroke", KeyBox)
-    BoxStroke.Color = Color3.fromRGB(80, 80, 110)
-    BoxStroke.Thickness = 1.5
+    local keyBox = Instance.new("TextBox", mainFrame)
+    keyBox.Position = UDim2.new(0, 15, 0, 48)
+    keyBox.Size = UDim2.new(1, -30, 0, 34)
+    keyBox.BackgroundColor3 = Color3.fromRGB(25, 25, 38)
+    keyBox.BorderSizePixel = 0
+    keyBox.Font = Enum.Font.Gotham
+    keyBox.PlaceholderText = "nhập key..."
+    keyBox.Text = ""
+    keyBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+    keyBox.TextSize = 12
+    keyBox.ClearTextOnFocus = false
+    Instance.new("UICorner", keyBox).CornerRadius = UDim.new(0, 8)
+    local boxStroke = Instance.new("UIStroke", keyBox)
+    boxStroke.Color = Color3.fromRGB(80, 80, 110)
+    boxStroke.Thickness = 1.5
 
-    local GetKeyBtn = Instance.new("TextButton", MainFrame)
-    GetKeyBtn.Position = UDim2.new(0, 15, 0, 112)
-    GetKeyBtn.Size = UDim2.new(0, 160, 0, 40)
-    GetKeyBtn.BackgroundColor3 = Color3.fromRGB(50, 120, 190)
-    GetKeyBtn.BorderSizePixel = 0
-    GetKeyBtn.Font = Enum.Font.GothamBold
-    GetKeyBtn.Text = "🌐 Lấy Key (Get Key)"
-    GetKeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-    GetKeyBtn.TextSize = 12
-    Instance.new("UICorner", GetKeyBtn).CornerRadius = UDim.new(0, 10)
+    local getKeyBtn = Instance.new("TextButton", mainFrame)
+    getKeyBtn.Position = UDim2.new(0, 15, 0, 90)
+    getKeyBtn.Size = UDim2.new(0, 170, 0, 34)
+    getKeyBtn.BackgroundColor3 = Color3.fromRGB(50, 120, 190)
+    getKeyBtn.BorderSizePixel = 0
+    getKeyBtn.Font = Enum.Font.GothamBold
+    getKeyBtn.Text = "🌐 lấy key (get key)"
+    getKeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    getKeyBtn.TextSize = 12
+    Instance.new("UICorner", getKeyBtn).CornerRadius = UDim.new(0, 8)
 
-    local CheckKeyBtn = Instance.new("TextButton", MainFrame)
-    CheckKeyBtn.Position = UDim2.new(1, -175, 0, 112)
-    CheckKeyBtn.Size = UDim2.new(0, 160, 0, 40)
-    CheckKeyBtn.BackgroundColor3 = Color3.fromRGB(50, 170, 90)
-    CheckKeyBtn.BorderSizePixel = 0
-    CheckKeyBtn.Font = Enum.Font.GothamBold
-    CheckKeyBtn.Text = "✓ Xác Nhận (Check Key)"
-    CheckKeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-    CheckKeyBtn.TextSize = 12
-    Instance.new("UICorner", CheckKeyBtn).CornerRadius = UDim.new(0, 10)
+    local checkKeyBtn = Instance.new("TextButton", mainFrame)
+    checkKeyBtn.Position = UDim2.new(1, -185, 0, 90)
+    checkKeyBtn.Size = UDim2.new(0, 170, 0, 34)
+    checkKeyBtn.BackgroundColor3 = Color3.fromRGB(50, 170, 90)
+    checkKeyBtn.BorderSizePixel = 0
+    checkKeyBtn.Font = Enum.Font.GothamBold
+    checkKeyBtn.Text = "✓ xác nhận (check key)"
+    checkKeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    checkKeyBtn.TextSize = 12
+    Instance.new("UICorner", checkKeyBtn).CornerRadius = UDim.new(0, 8)
 
-    GetKeyBtn.MouseButton1Click:Connect(function()
+    local codeTitle = Instance.new("TextLabel", mainFrame)
+    codeTitle.Position = UDim2.new(0, 15, 0, 132)
+    codeTitle.Size = UDim2.new(1, -30, 0, 18)
+    codeTitle.BackgroundTransparency = 1
+    codeTitle.Font = Enum.Font.GothamBold
+    codeTitle.Text = "🎁 code to free key"
+    codeTitle.TextColor3 = Color3.fromRGB(255, 210, 100)
+    codeTitle.TextSize = 12
+
+    local codeBox = Instance.new("TextBox", mainFrame)
+    codeBox.Position = UDim2.new(0, 15, 0, 156)
+    codeBox.Size = UDim2.new(1, -115, 0, 34)
+    codeBox.BackgroundColor3 = Color3.fromRGB(25, 25, 38)
+    codeBox.BorderSizePixel = 0
+    codeBox.Font = Enum.Font.Gotham
+    codeBox.PlaceholderText = "nhập code..."
+    codeBox.Text = ""
+    codeBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+    codeBox.TextSize = 12
+    codeBox.ClearTextOnFocus = false
+    Instance.new("UICorner", codeBox).CornerRadius = UDim.new(0, 8)
+    local cBoxStroke = Instance.new("UIStroke", codeBox)
+    cBoxStroke.Color = Color3.fromRGB(150, 100, 200)
+    cBoxStroke.Thickness = 1.5
+
+    local submitCodeBtn = Instance.new("TextButton", mainFrame)
+    submitCodeBtn.Position = UDim2.new(1, -95, 0, 156)
+    submitCodeBtn.Size = UDim2.new(0, 80, 0, 34)
+    submitCodeBtn.BackgroundColor3 = Color3.fromRGB(180, 80, 140)
+    submitCodeBtn.BorderSizePixel = 0
+    submitCodeBtn.Font = Enum.Font.GothamBold
+    submitCodeBtn.Text = "nhập code"
+    submitCodeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    submitCodeBtn.TextSize = 11
+    Instance.new("UICorner", submitCodeBtn).CornerRadius = UDim.new(0, 8)
+
+    local keyDisplayLabel = Instance.new("TextLabel", mainFrame)
+    keyDisplayLabel.Position = UDim2.new(0, 15, 0, 200)
+    keyDisplayLabel.Size = UDim2.new(1, -30, 0, 32)
+    keyDisplayLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
+    keyDisplayLabel.BorderSizePixel = 0
+    keyDisplayLabel.Font = Enum.Font.GothamBold
+    keyDisplayLabel.Text = "key của bạn: [chưa nhập code]"
+    keyDisplayLabel.TextColor3 = Color3.fromRGB(180, 180, 200)
+    keyDisplayLabel.TextSize = 11
+    Instance.new("UICorner", keyDisplayLabel).CornerRadius = UDim.new(0, 8)
+    local kdStroke = Instance.new("UIStroke", keyDisplayLabel)
+    kdStroke.Color = Color3.fromRGB(70, 70, 100)
+    kdStroke.Thickness = 1
+
+    local statusText = Instance.new("TextLabel", mainFrame)
+    statusText.Position = UDim2.new(0, 15, 0, 246)
+    statusText.Size = UDim2.new(1, -30, 0, 24)
+    statusText.BackgroundTransparency = 1
+    statusText.Font = Enum.Font.GothamBold
+    statusText.Text = "⭐ nhập code nhận key miễn phí ngay!"
+    statusText.TextColor3 = Color3.fromRGB(150, 220, 255)
+    statusText.TextSize = 11
+
+    getKeyBtn.MouseButton1Click:Connect(function()
         pcall(function()
-            setclipboard(KeyLink)
+            setclipboard(keyLink)
         end)
     end)
 
-    CheckKeyBtn.MouseButton1Click:Connect(function()
-        local inputVal = KeyBox.Text
+    checkKeyBtn.MouseButton1Click:Connect(function()
+        local inputVal = keyBox.Text
         if inputVal ~= "" then
-            ScreenGui:Destroy()
-            LaunchMainScript()
+            screenGui:Destroy()
+            launchMainScript()
+        end
+    end)
+
+    submitCodeBtn.MouseButton1Click:Connect(function()
+        local enteredCode = codeBox.Text
+        local prefix = validCodes[enteredCode]
+        
+        if prefix then
+            local generatedKey = prefix .. math.random(1000, 9999)
+            
+            keyDisplayLabel.Text = "key của bạn: " .. generatedKey
+            keyDisplayLabel.TextColor3 = Color3.fromRGB(100, 255, 100)
+            keyBox.Text = generatedKey
+            statusText.Text = "✓ nhập code thành công! đã tạo key."
+            statusText.TextColor3 = Color3.fromRGB(100, 255, 100)
+            
+            pcall(function()
+                setclipboard(generatedKey)
+            end)
+        else
+            keyDisplayLabel.Text = "key của bạn: [code không hợp lệ]"
+            keyDisplayLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
+            statusText.Text = "❌ code sai hoặc không tồn tại!"
+            statusText.TextColor3 = Color3.fromRGB(255, 80, 80)
         end
     end)
 end
 
-ShowKeySystem()
+showKeySystem()
 
 
 
