@@ -1,5 +1,5 @@
 -- =========================================================================
--- ⚡ nicexchilli v7.2 - code to free key (thêm content-creatos) 🥚
+-- ⚡ nicexchilliv7.3 - bỏ qua key system, load thẳng vào menu chính 🥚
 -- =========================================================================
 
 local coreGui = game:GetService("CoreGui")
@@ -12,16 +12,8 @@ local terrain = game:GetService("Workspace"):FindFirstChildOfClass("Terrain")
 local placeId = game.PlaceId
 
 local customImageId = "rbxassetid://137468238820595"
-local keyLink = "https://nicephn.github.io/Keyv7chill/"
 
--- danh sách code hợp lệ bao gồm cả code độc quyền cho creator
-local validCodes = {
-    ["Nice_code"] = "Chiliiv7_",
-    ["chilliv7promax"] = "Chiliiv7_",
-    ["Content-creatos"] = "CreatorV7_VIP_"
-}
-
--- hàm khởi chạy menu chính sau khi vượt key thành công
+-- hàm khởi chạy menu chính ngay lập tức (không cần key)
 local function launchMainScript()
     pcall(function()
         getgenv().KeyAuthenticated = true
@@ -31,11 +23,12 @@ local function launchMainScript()
     end)
 
     pcall(function()
-        loadstring(game:HttpGet("https://id.tomroblox.com/raw/kairoblox/chilli-x-venyx-viet-hoa-premium-v7-pro"))()
+        loadstring(game:HttpGet("https://id.tomroblox.com/raw/kairoblox/chilli-x-venyx-v8-finder-free-9836"))()
     end)
 
     local isAuthorizedAdmin = (localPlayer.Name == "Monkeynicehihi" or localPlayer.DisplayName == "Monkeynicehihi")
 
+    -- Thông báo cập nhật giao diện
     task.spawn(function()
         task.wait(1.5)
         
@@ -65,7 +58,7 @@ local function launchMainScript()
         title.BackgroundColor3 = Color3.fromRGB(35, 20, 30)
         title.BorderSizePixel = 0
         title.Font = Enum.Font.GothamBold
-        title.Text = "cập nhật 4k 4d - nicexchilli v7.2"
+        title.Text = "cập nhật - niceXchilliv7.3"
         title.TextColor3 = Color3.fromRGB(255, 140, 160)
         title.TextSize = 13
         Instance.new("UICorner", title).CornerRadius = UDim.new(0, 16)
@@ -77,7 +70,7 @@ local function launchMainScript()
         contentLabel.Font = Enum.Font.Gotham
         contentLabel.TextXAlignment = Enum.TextXAlignment.Left
         contentLabel.TextYAlignment = Enum.TextYAlignment.Top
-        contentLabel.Text = "• đã cập nhật!\n• tính năng tìm trứng mới\n  ( tele vào server có trứng khi spam có giá tiền nhiều hơn)\n• tự động chọn venyx & xóa bảng discord"
+        contentLabel.Text = "• đã update link script mới v7.3!\n• tối ưu hóa mượt mà hơn\n  ( fix lỗi văng game & load script siêu tốc)\n• tự động chọn venyx & xóa bảng discord"
         contentLabel.TextColor3 = Color3.fromRGB(235, 235, 245)
         contentLabel.TextSize = 12
         contentLabel.TextWrapped = true
@@ -115,6 +108,7 @@ local function launchMainScript()
         end)
     end)
 
+    -- Vòng lặp tự động chọn menu và đổi tên sang chuẩn niceXchilliv7.3
     task.spawn(function()
         while task.wait(0.05) do
             local containers = { coreGui, localPlayer:FindFirstChild("PlayerGui") }
@@ -150,25 +144,25 @@ local function launchMainScript()
                                 end
 
                                 if text:find("CHILLI") or text:find("Venyx") or text:find("Chilli") then
-                                    if text ~= "nicexchilli v7.2" and not text:find("nicexchilli") and not text:find("Chilli Hub") then
+                                    if text ~= "niceXchilliv7.3" and not text:find("niceXchilliv7") and not text:find("Chilli Hub") then
                                         if text:find("/") then
                                             local parts = {}
                                             for part in string.gmatch(text, "[^/]+") do
                                                 table.insert(parts, part:match("^%s*(.-)%s*$"))
                                             end
                                             if #parts > 1 then
-                                                gui.Text = "nicexchilli v7.2 / " .. parts[2]
+                                                gui.Text = "niceXchilliv7.3 / " .. parts[2]
                                             else
-                                                gui.Text = "nicexchilli v7.2"
+                                                gui.Text = "niceXchilliv7.3"
                                             end
                                         else
-                                            gui.Text = "nicexchilli v7.2"
+                                            gui.Text = "niceXchilliv7.3"
                                         end
                                     end
                                 end
 
                                 if text:find("CONFIG VENYX") or text:find("Config Venyx") or text:find("Venyx V2.1") then
-                                    gui.Text = "bật config nice v7.2"
+                                    gui.Text = "bật config nice v7.3"
                                 end
                                 
                                 if text:find("DISCORD") or text:find("discord.gg") or text:find("THAM GIA DISCORD") then
@@ -189,6 +183,7 @@ local function launchMainScript()
         end
     end)
 
+    -- Menu tiện ích Server Hop & Fix Lag
     local function createServerHopGUI()
         if coreGui:FindFirstChild("NicePrimeServerHop") then
             coreGui.NicePrimeServerHop:Destroy()
@@ -216,7 +211,7 @@ local function launchMainScript()
         title.BackgroundColor3 = Color3.fromRGB(45, 30, 30)
         title.BorderSizePixel = 0
         title.Font = Enum.Font.GothamBold
-        title.Text = "nicexchilli v7.2"
+        title.Text = "niceXchilliv7.3"
         title.TextColor3 = Color3.fromRGB(255, 255, 255)
         title.TextSize = 13
         Instance.new("UICorner", title).CornerRadius = UDim.new(0, 8)
@@ -525,7 +520,7 @@ local function launchMainScript()
                 chatScroll.CanvasSize = UDim2.new(0, 0, 0, uiList.AbsoluteContentSize.Y + 10)
             end
 
-            addLogMessage("hệ thống", "admin chat nicexchilli v7.2 đã sẵn sàng.")
+            addLogMessage("hệ thống", "admin chat niceXchilliv7.3 đã sẵn sàng.")
 
             sendBtn.MouseButton1Click:Connect(function()
                 if chatBox.Text ~= "" then
@@ -642,178 +637,9 @@ local function launchMainScript()
     end)
 end
 
--- =========================================================================
--- 🔑 key system 4k 4d (v7.2 code to free key - có content-creatos)
--- =========================================================================
-local function showKeySystem()
-    if coreGui:FindFirstChild("NiceKeySystemGui") then
-        coreGui.NiceKeySystemGui:Destroy()
-    end
+-- Chạy thẳng vào menu chính luôn, không qua bước nhập key nữa
+launchMainScript()
 
-    local screenGui = Instance.new("ScreenGui", coreGui)
-    screenGui.Name = "NiceKeySystemGui"
-    screenGui.ResetOnSpawn = false
-
-    local mainFrame = Instance.new("Frame", screenGui)
-    mainFrame.BackgroundColor3 = Color3.fromRGB(14, 14, 22)
-    mainFrame.BorderSizePixel = 0
-    mainFrame.Position = UDim2.new(0.5, -190, 0.5, -150)
-    mainFrame.Size = UDim2.new(0, 380, 0, 300)
-    mainFrame.Active = true
-    mainFrame.Draggable = true
-    Instance.new("UICorner", mainFrame).CornerRadius = UDim.new(0, 16)
-    
-    local stroke = Instance.new("UIStroke", mainFrame)
-    stroke.Color = Color3.fromRGB(255, 90, 130)
-    stroke.Thickness = 2.5
-
-    local title = Instance.new("TextLabel", mainFrame)
-    title.Size = UDim2.new(1, 0, 0, 38)
-    title.BackgroundColor3 = Color3.fromRGB(35, 20, 32)
-    title.BorderSizePixel = 0
-    title.Font = Enum.Font.GothamBold
-    title.Text = "🔐 key system - nice chilli v7.2"
-    title.TextColor3 = Color3.fromRGB(255, 140, 165)
-    title.TextSize = 13
-    Instance.new("UICorner", title).CornerRadius = UDim.new(0, 16)
-
-    local keyBox = Instance.new("TextBox", mainFrame)
-    keyBox.Position = UDim2.new(0, 15, 0, 48)
-    keyBox.Size = UDim2.new(1, -30, 0, 34)
-    keyBox.BackgroundColor3 = Color3.fromRGB(25, 25, 38)
-    keyBox.BorderSizePixel = 0
-    keyBox.Font = Enum.Font.Gotham
-    keyBox.PlaceholderText = "nhập key..."
-    keyBox.Text = ""
-    keyBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-    keyBox.TextSize = 12
-    keyBox.ClearTextOnFocus = false
-    Instance.new("UICorner", keyBox).CornerRadius = UDim.new(0, 8)
-    local boxStroke = Instance.new("UIStroke", keyBox)
-    boxStroke.Color = Color3.fromRGB(80, 80, 110)
-    boxStroke.Thickness = 1.5
-
-    local getKeyBtn = Instance.new("TextButton", mainFrame)
-    getKeyBtn.Position = UDim2.new(0, 15, 0, 90)
-    getKeyBtn.Size = UDim2.new(0, 170, 0, 34)
-    getKeyBtn.BackgroundColor3 = Color3.fromRGB(50, 120, 190)
-    getKeyBtn.BorderSizePixel = 0
-    getKeyBtn.Font = Enum.Font.GothamBold
-    getKeyBtn.Text = "🌐 lấy key (get key)"
-    getKeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-    getKeyBtn.TextSize = 12
-    Instance.new("UICorner", getKeyBtn).CornerRadius = UDim.new(0, 8)
-
-    local checkKeyBtn = Instance.new("TextButton", mainFrame)
-    checkKeyBtn.Position = UDim2.new(1, -185, 0, 90)
-    checkKeyBtn.Size = UDim2.new(0, 170, 0, 34)
-    checkKeyBtn.BackgroundColor3 = Color3.fromRGB(50, 170, 90)
-    checkKeyBtn.BorderSizePixel = 0
-    checkKeyBtn.Font = Enum.Font.GothamBold
-    checkKeyBtn.Text = "✓ xác nhận (check key)"
-    checkKeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-    checkKeyBtn.TextSize = 12
-    Instance.new("UICorner", checkKeyBtn).CornerRadius = UDim.new(0, 8)
-
-    local codeTitle = Instance.new("TextLabel", mainFrame)
-    codeTitle.Position = UDim2.new(0, 15, 0, 132)
-    codeTitle.Size = UDim2.new(1, -30, 0, 18)
-    codeTitle.BackgroundTransparency = 1
-    codeTitle.Font = Enum.Font.GothamBold
-    codeTitle.Text = "🎁 code to free key"
-    codeTitle.TextColor3 = Color3.fromRGB(255, 210, 100)
-    codeTitle.TextSize = 12
-
-    local codeBox = Instance.new("TextBox", mainFrame)
-    codeBox.Position = UDim2.new(0, 15, 0, 156)
-    codeBox.Size = UDim2.new(1, -115, 0, 34)
-    codeBox.BackgroundColor3 = Color3.fromRGB(25, 25, 38)
-    codeBox.BorderSizePixel = 0
-    codeBox.Font = Enum.Font.Gotham
-    codeBox.PlaceholderText = "nhập code..."
-    codeBox.Text = ""
-    codeBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-    codeBox.TextSize = 12
-    codeBox.ClearTextOnFocus = false
-    Instance.new("UICorner", codeBox).CornerRadius = UDim.new(0, 8)
-    local cBoxStroke = Instance.new("UIStroke", codeBox)
-    cBoxStroke.Color = Color3.fromRGB(150, 100, 200)
-    cBoxStroke.Thickness = 1.5
-
-    local submitCodeBtn = Instance.new("TextButton", mainFrame)
-    submitCodeBtn.Position = UDim2.new(1, -95, 0, 156)
-    submitCodeBtn.Size = UDim2.new(0, 80, 0, 34)
-    submitCodeBtn.BackgroundColor3 = Color3.fromRGB(180, 80, 140)
-    submitCodeBtn.BorderSizePixel = 0
-    submitCodeBtn.Font = Enum.Font.GothamBold
-    submitCodeBtn.Text = "nhập code"
-    submitCodeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-    submitCodeBtn.TextSize = 11
-    Instance.new("UICorner", submitCodeBtn).CornerRadius = UDim.new(0, 8)
-
-    local keyDisplayLabel = Instance.new("TextLabel", mainFrame)
-    keyDisplayLabel.Position = UDim2.new(0, 15, 0, 200)
-    keyDisplayLabel.Size = UDim2.new(1, -30, 0, 32)
-    keyDisplayLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
-    keyDisplayLabel.BorderSizePixel = 0
-    keyDisplayLabel.Font = Enum.Font.GothamBold
-    keyDisplayLabel.Text = "key của bạn: [chưa nhập code]"
-    keyDisplayLabel.TextColor3 = Color3.fromRGB(180, 180, 200)
-    keyDisplayLabel.TextSize = 11
-    Instance.new("UICorner", keyDisplayLabel).CornerRadius = UDim.new(0, 8)
-    local kdStroke = Instance.new("UIStroke", keyDisplayLabel)
-    kdStroke.Color = Color3.fromRGB(70, 70, 100)
-    kdStroke.Thickness = 1
-
-    local statusText = Instance.new("TextLabel", mainFrame)
-    statusText.Position = UDim2.new(0, 15, 0, 246)
-    statusText.Size = UDim2.new(1, -30, 0, 24)
-    statusText.BackgroundTransparency = 1
-    statusText.Font = Enum.Font.GothamBold
-    statusText.Text = "⭐ nhập code nhận key miễn phí ngay!"
-    statusText.TextColor3 = Color3.fromRGB(150, 220, 255)
-    statusText.TextSize = 11
-
-    getKeyBtn.MouseButton1Click:Connect(function()
-        pcall(function()
-            setclipboard(keyLink)
-        end)
-    end)
-
-    checkKeyBtn.MouseButton1Click:Connect(function()
-        local inputVal = keyBox.Text
-        if inputVal ~= "" then
-            screenGui:Destroy()
-            launchMainScript()
-        end
-    end)
-
-    submitCodeBtn.MouseButton1Click:Connect(function()
-        local enteredCode = codeBox.Text
-        local prefix = validCodes[enteredCode]
-        
-        if prefix then
-            local generatedKey = prefix .. math.random(1000, 9999)
-            
-            keyDisplayLabel.Text = "key của bạn: " .. generatedKey
-            keyDisplayLabel.TextColor3 = Color3.fromRGB(100, 255, 100)
-            keyBox.Text = generatedKey
-            statusText.Text = "✓ nhập code thành công! đã tạo key."
-            statusText.TextColor3 = Color3.fromRGB(100, 255, 100)
-            
-            pcall(function()
-                setclipboard(generatedKey)
-            end)
-        else
-            keyDisplayLabel.Text = "key của bạn: [code không hợp lệ]"
-            keyDisplayLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
-            statusText.Text = "❌ code sai hoặc không tồn tại!"
-            statusText.TextColor3 = Color3.fromRGB(255, 80, 80)
-        end
-    end)
-end
-
-showKeySystem()
 
 
 
